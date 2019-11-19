@@ -12,6 +12,8 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 /*
  * VIsta principal del programa
@@ -30,6 +32,7 @@ public class FormVistaPrincipal extends JFrame {
 	public JPanel PanelInf;
 	public JButton BtnGuardar;
 	private JButton btnNewButton;
+	private JLabel lblNewLabel;
 	
 
 	public FormVistaPrincipal() {
@@ -95,6 +98,13 @@ public class FormVistaPrincipal extends JFrame {
 		PanelCentral.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		contentPane.add(PanelCentral, BorderLayout.CENTER);
 		PanelCentral.setLayout(new BorderLayout(0, 0));
+		
+		lblNewLabel = new JLabel("CuadreSoft");
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		PanelCentral.add(lblNewLabel, BorderLayout.CENTER);
 	
 	}
 

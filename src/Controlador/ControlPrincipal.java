@@ -40,25 +40,32 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 
 	}
 
+	private void operarInicio() {// se encarga de la operacion para calcular el dinero que deberia existir en
+									// caja
+
+	}
+
 	private void escogerPanel(int nPanel) {// para escoger los paneles
 
 		switch (nPanel) {
 
-		case 0:
+		case 0:// panel de cuadre
 			cambiar.cambiarPNL(PanelCentral, CtrlInicioCuadre);
 			BtnAtras.setEnabled(false);
 			BtnGuardar.setVisible(false);
 			break;
-		case 1:
+		case 1:// panel de desglose
 			cambiar.cambiarPNL(PanelCentral, CtrlDesglose);
 			BtnAtras.setEnabled(true);
 			BtnSig.setEnabled(true);
 			BtnGuardar.setVisible(false);
 			break;
-		case 2:
+		case 2:// resumen del cuadre
 			cambiar.cambiarPNL(PanelCentral, CtrlCuadreFinal);
 			BtnSig.setEnabled(false);
 			BtnGuardar.setVisible(true);
+			CtrlCuadreFinal.calcularCuadre(CtrlInicioCuadre.getDatos(), CtrlInicioCuadre.getSumaTotal(), CtrlDesglose.getSumaTotal());
+			CtrlCuadreFinal.presentarResumen();
 			break;
 		}
 	}

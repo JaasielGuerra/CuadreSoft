@@ -1,5 +1,9 @@
 package Controlador;
 
+/*
+ * Control para el panel del desglose de dinero
+ */
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -15,6 +19,18 @@ import javax.swing.event.AncestorListener;
 import Vista.PnlDesglose;
 
 public class ControlDesglose extends PnlDesglose implements FocusListener, KeyListener {
+
+	// constantes
+	private static final short CIEN = 100;
+	private static final short CINCUENTA = 50;
+	private static final short VEINTE = 20;
+	private static final short DIEZ = 10;
+	private static final short CINCO = 5;
+	private static final short UNO = 1;
+	private static final float CINCUENTACENTAVOS = 0.50f;
+	private static final float VEINTICINCOCENTAVOS = 0.25f;
+	private static final float DIEZCENTAVOS = 0.10f;
+	private static final float CINCOCENTAVOS = 0.05f;
 
 	public ControlDesglose() {
 
@@ -54,6 +70,30 @@ public class ControlDesglose extends PnlDesglose implements FocusListener, KeyLi
 		DiezCent.setText("0");
 		CincoCent.setText("0");
 
+	}
+
+	public float getSumaTotal() {// devuelve la suma total del desglose de dinero;
+
+		float sumaTotal = 0;
+
+		// obtener el valor de los texfield
+		int nCien = Integer.parseInt(Cien.getText());
+		int nCincuenta = Integer.parseInt(Cincuenta.getText());
+		int nVeinte = Integer.parseInt(Veinte.getText());
+		int nDiez = Integer.parseInt(Diez.getText());
+		int nCinco = Integer.parseInt(Cinco.getText());
+		int nUno = Integer.parseInt(Uno.getText());
+		int nCincuentaCent = Integer.parseInt(CincuentaCent.getText());
+		int nVeinticincoCent = Integer.parseInt(VeinticincoCent.getText());
+		int nDiezCent = Integer.parseInt(DiezCent.getText());
+		int nCincoCent = Integer.parseInt(CincuentaCent.getText());
+		
+		// esta suma da como resultado el dinero real que hay en caja
+		sumaTotal = (CIEN * nCien) + (CINCUENTA * nCincuenta) + (VEINTE * nVeinte) + (DIEZ * nDiez) + (CINCO * nCinco) + 
+				(UNO * nUno) + (CINCUENTACENTAVOS * nCincuentaCent) + (VEINTICINCOCENTAVOS * nVeinticincoCent) +
+				(DIEZCENTAVOS * nDiezCent) + (CINCOCENTAVOS * nCincoCent);
+
+		return sumaTotal;
 	}
 
 	@Override

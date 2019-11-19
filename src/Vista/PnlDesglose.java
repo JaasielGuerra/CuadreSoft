@@ -56,7 +56,7 @@ public class PnlDesglose extends JPanel {
 		add(panel_3, BorderLayout.SOUTH);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		add(panel_4, BorderLayout.CENTER);
 		
 		Uno = new JTextField();
