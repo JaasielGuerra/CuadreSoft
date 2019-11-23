@@ -86,7 +86,7 @@ public class ControlDesglose extends PnlDesglose implements FocusListener, KeyLi
 		int nCincuentaCent = Integer.parseInt(CincuentaCent.getText());
 		int nVeinticincoCent = Integer.parseInt(VeinticincoCent.getText());
 		int nDiezCent = Integer.parseInt(DiezCent.getText());
-		int nCincoCent = Integer.parseInt(CincuentaCent.getText());
+		int nCincoCent = Integer.parseInt(CincoCent.getText());
 		
 		// esta suma da como resultado el dinero real que hay en caja
 		sumaTotal = (CIEN * nCien) + (CINCUENTA * nCincuenta) + (VEINTE * nVeinte) + (DIEZ * nDiez) + (CINCO * nCinco) + 

@@ -40,18 +40,19 @@ public class PnlCuadreFinal extends JPanel {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				true, false
+				false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
-		Tabla.getColumnModel().getColumn(0).setPreferredWidth(140);
-		Tabla.getColumnModel().getColumn(0).setMinWidth(140);
-		Tabla.getColumnModel().getColumn(0).setMaxWidth(140);
+		Tabla.getColumnModel().getColumn(0).setPreferredWidth(200);
+		Tabla.getColumnModel().getColumn(0).setMinWidth(200);
+		Tabla.getColumnModel().getColumn(0).setMaxWidth(200);
 		
-		//table.setRowHeight(57);
-		//table.getColumnModel().getColumn(0).setCellRenderer(tcr);
+		Tabla.setRowHeight(59);
+		Tabla.setDefaultRenderer(Object.class, new RenderTablaResumen());
+		//Tabla.getColumnModel().getColumn(0).setCellRenderer(tcr);
 
 	}
 }

@@ -64,8 +64,9 @@ public class ControlInicioCuadre extends PnlInicioCuadre implements FocusListene
 		float sumaTotal = 0f;
 
 		// esta operacion da como resultado el dinero que deberia existir en caja
-		sumaTotal = (Float.parseFloat(InicioCaja.getText()) + Float.parseFloat(Ventas.getText()))
-				- Float.parseFloat(Gastos.getText());
+		sumaTotal = (Float.parseFloat(InicioCaja.getText().replaceAll(",", ""))
+				+ Float.parseFloat(Ventas.getText().replaceAll(",", "")))
+				- Float.parseFloat(Gastos.getText().replaceAll(",", ""));
 
 		return sumaTotal;// retorna el resultado
 	}

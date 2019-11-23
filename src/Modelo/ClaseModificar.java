@@ -20,7 +20,7 @@ public class ClaseModificar {
 	private PreparedStatement preMod;
 	private ArrayList<Object> valores;
 	private StringBuilder SQL;
-	private ArrayList<String> tipoCampo;
+	// private ArrayList<String> tipoCampo;
 
 	// constructor
 	public ClaseModificar(Connection objConector_, String nombreTab_) {
@@ -38,13 +38,13 @@ public class ClaseModificar {
 		this.preMod = null;
 		this.valores = new ArrayList<Object>();
 		this.SQL = new StringBuilder();
-		this.tipoCampo = new ArrayList<String>();
+		// this.tipoCampo = new ArrayList<String>();
 		this.SQL.append("UPDATE ").append(nombreTab).append(" SET ");// inicializar sentencia SQL
 
 	}
 
 	// metodo para actualizar datos primitivos
-	public void agregarValor(String campo, Object valor, String tipoCampo_) {
+	public void agregarValor(String campo, Object valor) {
 
 		// ==========CONSTRUYENDO SENTENCIA SQL=====================================
 		if (valores.size() < 1)// si es el primer campo
@@ -59,12 +59,11 @@ public class ClaseModificar {
 
 		this.valores.add(valor);// agregar el valor
 
-		this.tipoCampo.add(tipoCampo_);// tipo de campo
-
+		// this.tipoCampo.add(tipoCampo_);// tipo de campo
 	}
 
 	// metodo para actualizar datos de tipo arreglos de bytes
-	public void agregarValor(String campo, byte[] valor, String tipoCampo_) {
+	public void agregarValor(String campo, byte[] valor) {
 
 		// ==========CONSTRUYENDO SENTENCIA SQL=====================================
 		if (valores.size() < 1)// primer campo
@@ -79,12 +78,19 @@ public class ClaseModificar {
 
 		this.valores.add(valor);// le metemos un valor quemado al arrayList en lugar del byte de la huella
 
-		this.tipoCampo.add(tipoCampo_);// agregar el tipo de campo
-
+		// this.tipoCampo.add(tipoCampo_);// agregar el tipo de campo
 	}
 
 	// este metodo setea los valores para el WHERE
 	public void setDonde(String campo, String valBuscar) {
+
+		// completando Sentencia SQL
+		this.SQL.append(" WHERE ").append(campo).append(" = ").append("'").append(valBuscar).append("'").append(";");
+
+	}
+
+	// este metodo setea los valores para el WHERE
+	public void setDonde(String campo, int valBuscar) {
 
 		// completando Sentencia SQL
 		this.SQL.append(" WHERE ").append(campo).append(" = ").append("").append(valBuscar).append("").append(";");

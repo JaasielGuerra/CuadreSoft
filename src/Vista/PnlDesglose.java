@@ -60,93 +60,103 @@ public class PnlDesglose extends JPanel {
 		add(panel_4, BorderLayout.CENTER);
 		
 		Uno = new JTextField();
+		Uno.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Uno.setColumns(10);
 		
 		CincuentaCent = new JTextField();
+		CincuentaCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		CincuentaCent.setColumns(10);
 		
 		VeinticincoCent = new JTextField();
+		VeinticincoCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		VeinticincoCent.setColumns(10);
 		
 		DiezCent = new JTextField();
+		DiezCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		DiezCent.setColumns(10);
 		
 		CincoCent = new JTextField();
+		CincoCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		CincoCent.setColumns(10);
-		panel_4.setLayout(new GridLayout(10, 2, 15, 5));
+		panel_4.setLayout(new GridLayout(10, 2, 15, 3));
 		
 		JLabel lblNewLabel = new JLabel("Q100.00 ->");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel);
 		
 		Cien = new JTextField();
+		Cien.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Cien.setColumns(10);
 		panel_4.add(Cien);
 		
 		JLabel lblNewLabel_1 = new JLabel("Q50.00 ->");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_1);
 		
 		Cincuenta = new JTextField();
+		Cincuenta.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Cincuenta.setColumns(10);
 		panel_4.add(Cincuenta);
 		
 		JLabel lblNewLabel_2 = new JLabel("Q20.00 ->");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_2);
 		
 		Veinte = new JTextField();
+		Veinte.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Veinte.setColumns(10);
 		panel_4.add(Veinte);
 		
 		JLabel lblNewLabel_3 = new JLabel("Q10.00 ->");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_3);
 		
 		Diez = new JTextField();
+		Diez.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Diez.setColumns(10);
 		panel_4.add(Diez);
 		
 		JLabel lblNewLabel_4 = new JLabel("Q5.00 ->");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_4.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_4);
 		
 		Cinco = new JTextField();
+		Cinco.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Cinco.setColumns(10);
 		panel_4.add(Cinco);
 		
 		JLabel lblNewLabel_5 = new JLabel("Q1.00 ->");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_5.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_5);
 		panel_4.add(Uno);
 		
 		JLabel lblNewLabel_6 = new JLabel("Q0.50 ->");
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_6.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_6);
 		panel_4.add(CincuentaCent);
 		
 		JLabel lblNewLabel_7 = new JLabel("Q0.25 ->");
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_7.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_7);
 		panel_4.add(VeinticincoCent);
 		
 		JLabel lblNewLabel_8 = new JLabel("Q0.10 ->");
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_8.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_8);
 		panel_4.add(DiezCent);
 		
 		JLabel lblNewLabel_9 = new JLabel("Q0.05 ->");
 		lblNewLabel_9.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_9.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.add(lblNewLabel_9);
 		panel_4.add(CincoCent);
 

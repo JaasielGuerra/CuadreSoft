@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.border.TitledBorder;
 import javax.swing.JFormattedTextField;
 import java.util.Date;
+import javax.swing.UIManager;
 
 public class PnlInicioCuadre extends JPanel {
 
@@ -65,35 +66,40 @@ public class PnlInicioCuadre extends JPanel {
 		add(panel_3, BorderLayout.SOUTH);
 
 		JPanel panel_4 = new JPanel();
-		panel_4.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		panel_4.setFont(new Font("Arial Black", Font.PLAIN, 12));
 
-		panel_4.setBorder(new TitledBorder(null, "Datos Iniciales", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		panel_4.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Datos Iniciales",
+				TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial Black", Font.PLAIN, 12), new Color(0, 0, 0)));
 		add(panel_4, BorderLayout.CENTER);
 
 		JLabel lblNewLabel = new JLabel("Fecha");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 16));
 
 		Fecha = new JDateChooser();
+		Fecha.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Fecha.setDateFormatString("dd/MM/yyyy");
 		Fecha.setDate(date);
 
 		JLabel lblNewLabel_1 = new JLabel("Inicio Caja");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
 
 		InicioCaja = new JFormattedTextField(decimalFormato);
+		InicioCaja.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		InicioCaja.setText("0.00");
 
 		Ventas = new JFormattedTextField(decimalFormato);
+		Ventas.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Ventas.setText("0.00");
 
 		Gastos = new JFormattedTextField(decimalFormato);
+		Gastos.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Gastos.setText("0.00");
 
 		JLabel lblNewLabel_2 = new JLabel("Ventas");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(new Font("Arial Black", Font.PLAIN, 16));
 
 		JLabel lblNewLabel_3 = new JLabel("Gastos");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_4.setLayout(new GridLayout(4, 2, 0, 5));
 		panel_4.add(lblNewLabel);
 		panel_4.add(Fecha);

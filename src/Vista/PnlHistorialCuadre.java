@@ -5,9 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class PnlHistorialCuadre extends JPanel {
-	private JTable table;
+	public JTable Tabla;
 
 	/**
 	 * Create the panel.
@@ -15,14 +16,29 @@ public class PnlHistorialCuadre extends JPanel {
 	public PnlHistorialCuadre() {
 		setLayout(new BorderLayout(0, 0));
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		JScrollPane scrollPane = new JScrollPane();
+		add(scrollPane, BorderLayout.CENTER);
+		
+		Tabla = new JTable();
+		Tabla.setDefaultRenderer(Object.class, new RenderTablaHistorial());
+		Tabla.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
+				"Fecha", "Inicio Caja", "Ventas", "Gastos", "Dinero real", "Diferencia", "Cuadre Final"
 			}
-		));
-		add(table, BorderLayout.CENTER);
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(Tabla);
+					
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
 
 	}
 

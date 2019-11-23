@@ -8,55 +8,55 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+
 /**
  *
  * @author Brandon Pineda
  */
 public class ClaseEliminar {
 
-	private Connection objConector = null;
-	private String nombreTab = null;
+    private Connection objConector = null;
+    private String nombreTab = null;
 
-	private StringBuilder SQL;
-	private PreparedStatement preElim;
+    private StringBuilder SQL;
+    private PreparedStatement preElim;
 
-	public ClaseEliminar(Connection objConector_, String nombreTab_) {// constructor
+    public ClaseEliminar(Connection objConector_, String nombreTab_) {//constructor
 
-		this.objConector = objConector_;
-		this.nombreTab = nombreTab_;
+        this.objConector = objConector_;
+        this.nombreTab = nombreTab_;
+        
+        initVariables();
+    }
 
-		initVariables();
-	}
+    public void borrar(String campo, String valBuscar) {
 
-	public void borrar(String campo, String valBuscar) {
+        System.out.println("Conectado desde: " + this.getClass().getName());
 
-		System.out.println("Conectado desde: " + this.getClass().getName());
+        this.SQL.append(campo).append(" = ").append("'").append(valBuscar).append("'");
 
-		this.SQL.append(campo).append(" = ").append("'").append(valBuscar).append("'").append(";");
+        try {
+            if (objConector != null) {
+                this.preElim = objConector.prepareStatement(SQL.toString());//agregar SQL
+                this.preElim.executeUpdate();
+                System.out.println("Registro borrado correctamente de la tabla: "+this.nombreTab);
+                initVariables();//volver a inicializar
 
-		System.out.println("SQL Construido: " + SQL.toString());
+            } else {
+                System.out.println("Error no es posible realizar la operacion");
+                //JOptionPane.showMessageDialog(null, "Error no es posible realizar la operacion");
 
-		try {
-			if (objConector != null) {
-				this.preElim = objConector.prepareStatement(SQL.toString());// agregar SQL
-				this.preElim.executeUpdate();
-				System.out.println("Registro borrado correctamente de la tabla: " + this.nombreTab);
-				initVariables();// volver a inicializar
+            }
 
-			} else {
-				System.out.println("Error no es posible realizar la operacion");
+        } catch (HeadlessException | SQLException ex) {
+            System.out.println("Error al realizar la actualización por" + ex.getMessage());
+            //JOptionPane.showMessageDialog(null, "Error al realizar la actualización por" + ex.getMessage());
+        }
+    }
 
-			}
-
-		} catch (HeadlessException | SQLException ex) {
-			System.out.println("Error al realizar la eliminacion por" + ex.getMessage());
-
-		}
-	}
-
-	private void initVariables() {
-		this.SQL = new StringBuilder();
-		this.preElim = null;
-		this.SQL.append("DELETE FROM ").append(nombreTab).append(" WHERE ");// inicializar sentencia SQL
-	}
+    private void initVariables() {
+        this.SQL = new StringBuilder();
+        this.preElim = null;
+        this.SQL.append("DELETE FROM ").append(nombreTab).append(" WHERE ");//inicializar sentencia SQL
+    }
 }

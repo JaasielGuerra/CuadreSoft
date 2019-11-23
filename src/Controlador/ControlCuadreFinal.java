@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /*
  * Control para mostrar detalles resumidos sobre el cuadre final
@@ -12,6 +13,7 @@ public class ControlCuadreFinal extends PnlCuadreFinal {
 
 	// atributos
 	private ArrayList<String> datos;
+	private ArrayList<String> listaDatos;
 	private float diferenciaDinero;
 	private float dineroReal;
 	private float totalSacarCaja;
@@ -29,33 +31,35 @@ public class ControlCuadreFinal extends PnlCuadreFinal {
 
 		this.dineroReal = dineroReal;
 		this.diferenciaDinero = dineroReal - dineroHipotetico;// la resta determina si sobra o falta dinero
-		
+
 		this.ganancia = dineroHipotetico - Float.parseFloat(datosIniciales.get(1));// calcular la ganancia
-		
+
 		this.totalSacarCaja = ganancia + (diferenciaDinero);// determinar el total para sacar de la caja
 
 		// lista de datos
-		this.datos.add("Inicio Caja");// etiqueta
-		this.datos.add(datosIniciales.get(1));// inicio caja
-		this.datos.add("Ventas");// etiqueta
-		this.datos.add(datosIniciales.get(2));// ventas
-		this.datos.add("Gastos");// etiqueta
-		this.datos.add(datosIniciales.get(3));// gastos
-		this.datos.add("Dinero Real");// etiqueta
-		this.datos.add(String.valueOf(dineroReal) + "0");// dinero real
+		this.datos.add("Inicio Caja:");// etiqueta
+		this.datos.add(String.format("%.2f", Float.parseFloat(datosIniciales.get(1))));// inicio caja
+		this.datos.add("Ventas:");// etiqueta
+		this.datos.add(String.format("%.2f", Float.parseFloat(datosIniciales.get(2))));// ventas
+		this.datos.add("Gastos:");// etiqueta
+		this.datos.add(String.format("%.2f", Float.parseFloat(datosIniciales.get(3))));// gastos
+		this.datos.add("Dinero Real:");// etiqueta
+		this.datos.add(String.format("%.2f", dineroReal));// dinero real
 		if (diferenciaDinero > 0)
-			this.datos.add("Dinero Sobrante");// etiqueta
+			this.datos.add("Dinero Sobrante:");// etiqueta
 		else if (diferenciaDinero < 0)
-			this.datos.add("Dinero Faltante");// etiqueta
+			this.datos.add("Dinero Faltante:");// etiqueta
 		else
-			this.datos.add("Cuadre Exacto");// etiqueta 
-		this.datos.add(String.valueOf(diferenciaDinero).replaceAll("-", "") + "0");// sobra o falta dinero(si sale negativo se
-																				// elimina el sigono)
-		this.datos.add("Total Sacar de Caja");// etiqueta
+			this.datos.add("Cuadre Exacto:");// etiqueta
+		this.datos.add(String.format("%.2f", diferenciaDinero).replaceAll("-", ""));// sobra o falta dinero(si sale
+																					// negativo se
+		// elimina el sigono)
+		this.datos.add("Total Sacar de Caja:");// etiqueta
 		if (totalSacarCaja > 0) {// poner total solo si es mayor a cero
-			this.datos.add(String.valueOf(totalSacarCaja) + "0");
+			this.datos.add(String.format("%.2f", totalSacarCaja));
 		} else {// de lo contraro se pone cero
-			this.datos.add("0.00");
+			totalSacarCaja = 0.0f;
+			this.datos.add(String.format("%.2f", totalSacarCaja));
 		}
 
 	}
@@ -82,6 +86,16 @@ public class ControlCuadreFinal extends PnlCuadreFinal {
 			i++;// incrementar indice de fila
 		} while (Tabla.getRowCount() < 6);// recorrer las filas
 
+	}
+
+	public ArrayList<String> getDatos() {// retorna los datos calculados en cuadre final
+
+		listaDatos = new ArrayList<String>();
+
+		listaDatos.add(String.valueOf(diferenciaDinero));
+		listaDatos.add(String.valueOf(totalSacarCaja));
+
+		return listaDatos;
 	}
 
 }
