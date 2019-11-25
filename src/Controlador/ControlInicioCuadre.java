@@ -43,7 +43,7 @@ public class ControlInicioCuadre extends PnlInicioCuadre implements FocusListene
 	// para devolver la lista de datos
 	public ArrayList<String> getDatos() {
 
-		DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");// para formatear la fecha
+		DateFormat formato = new SimpleDateFormat(Fecha.getDateFormatString());// para formatear la fecha
 
 		// validando datos
 		if (Fecha.getDate() != null && InicioCaja.getText().length() > 0 && Ventas.getText().length() > 0

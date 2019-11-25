@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 import Modelo.ClaseConsultar;
+import Modelo.ClaseContarRegistros;
 import Modelo.ClaseInsertar;
 import Modelo.ClaseModificar;
 import Modelo.Conexion;
@@ -26,6 +27,7 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 	private ControlDesglose CtrlDesglose;
 	private ControlCuadreFinal CtrlCuadreFinal;
 	private ControlHistorial CtrlHistorialCuadre;
+	private ControlNota CtrlNota;
 	private int pnlSiguiente = 0;
 
 	public ControlPrincipal() {
@@ -35,6 +37,7 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		this.CtrlDesglose = new ControlDesglose();
 		this.CtrlCuadreFinal = new ControlCuadreFinal();
 		this.CtrlHistorialCuadre = new ControlHistorial();
+		this.CtrlNota = new ControlNota();
 
 		BtnCuadrar.addActionListener(this);
 		BtnHistorial.addActionListener(this);
@@ -45,13 +48,9 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		BtnAtras.setEnabled(false);
 		PanelInferior.setVisible(false);
 		BtnGuardar.setVisible(false);
+		CheckNota.setVisible(false);
 
 		// BtnCuadrar.doClick();//hacer clic a cuadrar
-
-	}
-
-	private void operarInicio() {// se encarga de la operacion para calcular el dinero que deberia existir en
-									// caja
 
 	}
 
@@ -59,29 +58,53 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 
 		switch (nPanel) {
 
-		case 0:// panel de cuadre
+		case 0:// panel de inicio cuadre
 			cambiar.cambiarPNL(PanelCentral, CtrlInicioCuadre);
 			BtnAtras.setEnabled(false);
 			BtnGuardar.setVisible(false);
+			CheckNota.setVisible(false);
+
 			break;
 		case 1:// panel de desglose
-			cambiar.cambiarPNL(PanelCentral, CtrlDesglose);
-			BtnAtras.setEnabled(true);
-			BtnSig.setEnabled(true);
-			BtnGuardar.setVisible(false);
+			if (CtrlInicioCuadre.getDatos() != null) {// comprobar si esta valido el formulario
+				cambiar.cambiarPNL(PanelCentral, CtrlDesglose);
+				BtnAtras.setEnabled(true);
+				BtnSig.setEnabled(true);
+				BtnGuardar.setVisible(false);
+				CheckNota.setVisible(false);
+			} else {
+				JOptionPane.showMessageDialog(this, "Formulario inválido. Por favor verifique", "Formulario",
+						JOptionPane.WARNING_MESSAGE);
+				pnlSiguiente = 0;// reiniciar la variable
+			}
 			break;
 		case 2:// resumen del cuadre
+
 			cambiar.cambiarPNL(PanelCentral, CtrlCuadreFinal);
 			BtnSig.setEnabled(false);
 			BtnGuardar.setVisible(true);
+			CheckNota.setVisible(true);
+
 			CtrlCuadreFinal.calcularCuadre(CtrlInicioCuadre.getDatos(), CtrlInicioCuadre.getSumaTotal(),
 					CtrlDesglose.getSumaTotal());
 			CtrlCuadreFinal.presentarResumen();
+
 			break;
 		}
 	}
 
 	private void actualizarResumen() {
+
+		if (CheckNota.isSelected())// si esta chequeado para insertar nota
+		{
+			CtrlNota.setTexto("");// limpiar
+			CtrlNota.setModal(true);
+			CtrlNota.setVisible(true);
+		} else {
+			CtrlNota.setTexto("- Sin nota que mostrar -");// indicar que esta vacio
+		}
+
+		String _nota = CtrlNota.getTexto();// guardar el texto del texArea
 
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursos en espera
 
@@ -95,16 +118,21 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		mod.agregarValor("dinero_real", CtrlDesglose.getSumaTotal());
 		mod.agregarValor("sobra_falta", CtrlCuadreFinal.getDatos().get(0));
 		mod.agregarValor("cuadre_final", CtrlCuadreFinal.getDatos().get(1));
+		mod.agregarValor("nota", _nota);
 
 		mod.setDonde("fecha", CtrlInicioCuadre.getDatos().get(0));
 
 		if (!mod.ejecutarSQL()) {
 			JOptionPane.showMessageDialog(this, "Error al actualizar en la Base de Datos", "Error Sqlite",
 					JOptionPane.ERROR_MESSAGE);
+		} else {
+			JOptionPane.showMessageDialog(this, "Resumen actualizado correctamente.", "Actualizar",
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		ObjConector.cerrar();// cerrar la conexion
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
+		BtnHistorial.doClick();// hacer click en el historial
 	}
 
 	private void guardarResumen() {
@@ -128,8 +156,16 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 
 					this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// poner cursos por default
 
-					int opcion = JOptionPane.showConfirmDialog(this,
-							"Ya existe un registro con la misma fecha." + "\n¿Quiere actualizar el registro?",
+					String _msjNota = "";
+
+					if (CheckNota.isSelected())// si esta chequeado para indicar el mensaje
+					{
+						_msjNota = " (Tenga en cuenta\nque debe volver a escribir la nota si escribió una antes)";
+					}
+
+					int opcion = JOptionPane.showConfirmDialog(
+							this, "Ya existe un registro con la misma fecha." + "\n¿Quiere actualizar el registro"
+									+ _msjNota + "?",
 							"Actualizar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 					if (opcion == JOptionPane.YES_OPTION) {
@@ -145,6 +181,17 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 					"Error Sqlite", JOptionPane.ERROR_MESSAGE);
 		}
 
+		if (CheckNota.isSelected())// si esta chequeado para insertar nota
+		{
+			CtrlNota.setTexto("");// limpiar
+			CtrlNota.setModal(true);
+			CtrlNota.setVisible(true);
+		} else {
+			CtrlNota.setTexto("- Sin nota que mostrar -");// indicar que esta vacio
+		}
+
+		String _nota = CtrlNota.getTexto();// guardar el texto del texArea
+
 		ClaseInsertar in = new ClaseInsertar(ObjConector.conectar(), "registro_cuadres");
 
 		// agregando los valores
@@ -155,13 +202,18 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		in.agregarValor("dinero_real", CtrlDesglose.getSumaTotal());
 		in.agregarValor("sobra_falta", CtrlCuadreFinal.getDatos().get(0));
 		in.agregarValor("cuadre_final", CtrlCuadreFinal.getDatos().get(1));
+		in.agregarValor("nota", _nota);
 
 		if (!in.ejecutarSQL()) {
 			JOptionPane.showMessageDialog(this, "Error al guardar en la Base de Datos", "Error Sqlite",
 					JOptionPane.ERROR_MESSAGE);
+		} else {
+			JOptionPane.showMessageDialog(this, "Resumen guardado correctamente.", "Guardado",
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 		ObjConector.cerrar();// cerrar la conexion
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		BtnHistorial.doClick();// hacer click
 	}
 
 	@Override
@@ -178,12 +230,25 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		/////////// boton historial////////////////
 		if (e.getSource().equals(BtnHistorial)) {
 
-			PanelInferior.setVisible(false);
 			this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
-			cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);
-			CtrlHistorialCuadre.presentarHistorial();// presentar el historial
-			this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
+			ClaseContarRegistros contar = new ClaseContarRegistros();// para contar si existe un registro
 
+			if (contar.contarReg("data/sqlitedatabase", "registro_cuadres") > 0) {// si existen registros
+
+				PanelInferior.setVisible(false);
+
+				cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);
+				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(0);// seleccionado por defecto en el combo
+				this.CtrlHistorialCuadre.Fecha.setDate(null);
+				CtrlHistorialCuadre.presentarHistorial(ClaseConsultar.ASCENDENTE);// presentar el historial en
+																					// ascendente
+
+			} else {
+				this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
+				JOptionPane.showMessageDialog(this, "Sin registros que mostrar.", "Vista",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
 		}
 
 		//////////////// boton atras///////////////

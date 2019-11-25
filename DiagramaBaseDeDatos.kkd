@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diagrama version="8" formula="%t_%c" nombreAutor="Jaasiel" nombreProyecto="BaseDeDatos">
+<diagrama formula="%t_%c" nombreAutor="Jaasiel" nombreProyecto="BaseDeDatos" version="8">
   <DataBase>3</DataBase>
   <lista-item>
-    <item id="{2b7622c1-c1c2-4145-97ce-51f192bc55f3}" type="modelo-tabla">
+    <item type="modelo-tabla" id="{2b7622c1-c1c2-4145-97ce-51f192bc55f3}">
       <nombre>registro_cuadres</nombre>
       <posicion>
         <x>-760</x>
         <y>-275</y>
       </posicion>
       <lista-columnas>
-        <columna id="{4594aa35-029b-4c8b-ae02-ae985d5eacf0}" notas="" llaveUnica="" nulo="0" nombre="fecha" llaveprimaria="0" tipoDato="TEXT"/>
-        <columna id="{33d33e7f-0108-4a28-b43e-0cce02a5fef4}" notas="" llaveUnica="" nulo="0" nombre="inicio_caja" llaveprimaria="0" tipoDato="TEXT"/>
-        <columna id="{3c7db9d2-a072-4ffe-bde9-863df2bddef6}" notas="" llaveUnica="" nulo="0" nombre="ventas" llaveprimaria="0" tipoDato="TEXT"/>
-        <columna id="{c9b3a083-6e85-419a-bd76-e344aab6d947}" notas="" llaveUnica="" nulo="0" nombre="gastos" llaveprimaria="0" tipoDato="TEXT"/>
-        <columna id="{6adf354e-5953-435e-9f4b-855f18cbd859}" notas="" llaveUnica="" nulo="0" nombre="dinero_real" llaveprimaria="0" tipoDato="TEXT"/>
-        <columna id="{148cd3a1-3636-4a29-86d4-6802af4f79a3}" notas="" llaveUnica="" nulo="0" nombre="sobra_falta" llaveprimaria="0" tipoDato="TEXT"/>
-        <columna id="{bd183e9f-1c75-41ea-b458-1a2af071a588}" notas="" llaveUnica="" nulo="0" nombre="cuadre_final" llaveprimaria="0" tipoDato="TEXT"/>
+        <columna nombre="fecha" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{4594aa35-029b-4c8b-ae02-ae985d5eacf0}" tipoDato="TEXT"/>
+        <columna nombre="inicio_caja" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{33d33e7f-0108-4a28-b43e-0cce02a5fef4}" tipoDato="TEXT"/>
+        <columna nombre="ventas" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{3c7db9d2-a072-4ffe-bde9-863df2bddef6}" tipoDato="TEXT"/>
+        <columna nombre="gastos" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{c9b3a083-6e85-419a-bd76-e344aab6d947}" tipoDato="TEXT"/>
+        <columna nombre="dinero_real" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{6adf354e-5953-435e-9f4b-855f18cbd859}" tipoDato="TEXT"/>
+        <columna nombre="sobra_falta" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{148cd3a1-3636-4a29-86d4-6802af4f79a3}" tipoDato="TEXT"/>
+        <columna nombre="cuadre_final" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{bd183e9f-1c75-41ea-b458-1a2af071a588}" tipoDato="TEXT"/>
+        <columna nombre="nota" llaveUnica="" notas="" llaveprimaria="0" nulo="0" id="{2f022cc1-54b0-418a-a36a-6c783bc335da}" tipoDato="TEXT"/>
       </lista-columnas>
     </item>
   </lista-item>

@@ -15,6 +15,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JFormattedTextField;
 import java.util.Date;
 import javax.swing.UIManager;
+import java.awt.Cursor;
+import java.awt.Dimension;
 
 public class PnlInicioCuadre extends JPanel {
 
@@ -76,8 +78,9 @@ public class PnlInicioCuadre extends JPanel {
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 16));
 
 		Fecha = new JDateChooser();
+		Fecha.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		Fecha.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		Fecha.setDateFormatString("dd/MM/yyyy");
+		Fecha.setDateFormatString("yyyy-MM-dd");
 		Fecha.setDate(date);
 
 		JLabel lblNewLabel_1 = new JLabel("Inicio Caja");

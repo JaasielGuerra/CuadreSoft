@@ -15,98 +15,129 @@ import java.sql.SQLException;
  */
 public class ClaseConsultar {
 
-    //atributos
-    private Connection objConector = null;
-    private PreparedStatement preConsulta;
-    private ResultSet resultadoConsulta;
-    private StringBuilder SQL;
+	// atributos
+	private Connection objConector = null;
+	private PreparedStatement preConsulta;
+	private ResultSet resultadoConsulta;
+	private StringBuilder SQL;
 
-    private String nombreTab;
+	private String nombreTab;
 
-    public ClaseConsultar(Connection objConector, String nombreTab_) {//constructor
+	// constantes publicas para el order by
+	public static final int ASCENDENTE = 1;
+	public static final int DESCENDENTE = 0;
 
-        this.objConector = objConector;
-        this.nombreTab = nombreTab_;
+	public ClaseConsultar(Connection objConector, String nombreTab_) {// constructor
 
-        initVariables();
+		this.objConector = objConector;
+		this.nombreTab = nombreTab_;
 
-    }
+		initVariables();
 
-    public void consultar(String ResultColumna)//para consultas generales
-    {
-        initVariables();//limpiar antes de cada consulta
-        SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab);//SQL
+	}
 
-        try {
+	public void consultar(String ResultColumna)// para consultas generales
+	{
+		initVariables();// limpiar antes de cada consulta
+		SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab);// SQL
 
-            System.out.println("SQL ejecutado " + SQL.toString());//imprimir SQL
-            preConsulta = objConector.prepareStatement(SQL.toString());
-            resultadoConsulta = preConsulta.executeQuery();//ejecutar la consulta
+		try {
 
-        } catch (SQLException ex) {
-            System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
-            System.err.println("Tabla :" + this.nombreTab);
-            resultadoConsulta = null;
-        }
+			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
+			preConsulta = objConector.prepareStatement(SQL.toString());
+			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
 
-        //return resultadoConsulta;//retorna toda la consulta
-    }
+		} catch (SQLException ex) {
+			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
+			System.err.println("Tabla :" + this.nombreTab);
+			resultadoConsulta = null;
+		}
 
-    public void consultar(String ResultColumna, String campo, String condicion,
-            String buscar)//para consultas especificas
-    {
-        initVariables();
-        SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab)
-                .append(" WHERE ").append(campo).append(" ").append(condicion)
-                .append(" '").append(buscar).append("'");//SQL
+		// return resultadoConsulta;//retorna toda la consulta
+	}
 
-        try {
+	public void consultar(String ResultColumna, String campOrderBy, int AscDesc)// para consultas con orden especifico
+	{
+		String ascDesc = "";
+		if (AscDesc == 0) {
+			ascDesc = " DESC "; // descendente
+		} else if (AscDesc == 1) {
+			ascDesc = " ASC "; // ascendente
+		}
 
-            System.out.println("SQL ejecutado " + SQL.toString());//imprimir SQL
-            preConsulta = objConector.prepareStatement(SQL.toString());
-            resultadoConsulta = preConsulta.executeQuery();//ejecutar la consulta
-            System.out.println("Datos consultado correctamente de la tabla: " + this.nombreTab);
+		initVariables();// limpiar antes de cada consulta
+		SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab).append(" ORDER BY ")
+				.append(campOrderBy).append(ascDesc);// SQL
 
-        } catch (SQLException ex) {
-            System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
-            resultadoConsulta = null;
-        }
+		try {
 
-        //return resultadoConsulta;//retorna toda la consulta
-    }
+			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
+			preConsulta = objConector.prepareStatement(SQL.toString());
+			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
 
-    public void consultar(String ResultColumna, String campo, String SubCadenabuscar)// para consultas de subcadenas
-    {
-        initVariables();
-        SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab).append(" WHERE ").append(campo)
-                .append(" ").append(" LIKE ").append(" '").append(SubCadenabuscar).append("%'");// SQL
+		} catch (SQLException ex) {
+			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
+			System.err.println("Tabla :" + this.nombreTab);
+			resultadoConsulta = null;
+		}
 
-        try {
+		// return resultadoConsulta;//retorna toda la consulta
+	}
 
-            System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
-            preConsulta = objConector.prepareStatement(SQL.toString());
-            resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
-            System.out.println("Datos consultado correctamente de la tabla: " + this.nombreTab);
+	public void consultar(String ResultColumna, String campo, String condicion, String buscar)// para consultas
+																								// especificas
+	{
+		initVariables();
+		SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab).append(" WHERE ").append(campo)
+				.append(" ").append(condicion).append(" '").append(buscar).append("'");// SQL
 
-        } catch (SQLException ex) {
-            System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
-            resultadoConsulta = null;
-        }
+		try {
 
-    }
+			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
+			preConsulta = objConector.prepareStatement(SQL.toString());
+			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
+			System.out.println("Datos consultado correctamente de la tabla: " + this.nombreTab);
 
-    public ResultSet getResultadoConsulta() {
-        return resultadoConsulta;//retorna la consulta
-    }
+		} catch (SQLException ex) {
+			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
+			resultadoConsulta = null;
+		}
 
-    public StringBuilder getSQL() {
-        return SQL;
-    }
+		// return resultadoConsulta;//retorna toda la consulta
+	}
 
-    private void initVariables() {//para limpiar las variables
-        this.preConsulta = null;
-        this.resultadoConsulta = null;
-        this.SQL = new StringBuilder();
-    }
+	public void consultar(String ResultColumna, String campo, String SubCadenabuscar)// para consultas de subcadenas
+	{
+		initVariables();
+		SQL.append("SELECT ").append(ResultColumna).append(" FROM ").append(nombreTab).append(" WHERE ").append(campo)
+				.append(" ").append(" LIKE ").append(" '").append(SubCadenabuscar).append("%'");// SQL
+
+		try {
+
+			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
+			preConsulta = objConector.prepareStatement(SQL.toString());
+			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
+			System.out.println("Datos consultado correctamente de la tabla: " + this.nombreTab);
+
+		} catch (SQLException ex) {
+			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
+			resultadoConsulta = null;
+		}
+
+	}
+
+	public ResultSet getResultadoConsulta() {
+		return resultadoConsulta;// retorna la consulta
+	}
+
+	public StringBuilder getSQL() {
+		return SQL;
+	}
+
+	private void initVariables() {// para limpiar las variables
+		this.preConsulta = null;
+		this.resultadoConsulta = null;
+		this.SQL = new StringBuilder();
+	}
 
 }

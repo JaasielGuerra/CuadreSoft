@@ -1,26 +1,212 @@
 package Controlador;
 
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 import Modelo.ClaseConsultar;
+import Modelo.ClaseContarRegistros;
+import Modelo.ClaseEliminar;
 import Modelo.Conexion;
 import Vista.PnlHistorialCuadre;
 
-public class ControlHistorial extends PnlHistorialCuadre {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+public class ControlHistorial extends PnlHistorialCuadre implements ActionListener, MouseListener {
+
+	private ControlNota CtrlNota;
+	private RellenarTabla rt;
 
 	public ControlHistorial() {
 
+		initCombobox();// llenar el combo
+
+		this.CtrlNota = new ControlNota();
+		this.rt = new RellenarTabla();
+
+		this.BtnEliminar.setEnabled(false);
+
+		// agragar la escucha de acciones
+		this.Ordenar.addActionListener(this);
+		this.BtnBuscar.addActionListener(this);
+		this.BtnEliminar.addActionListener(this);
+
+		this.Tabla.addMouseListener(this);
+
 	}
 
-	public void presentarHistorial() {
-		
+	private void initCombobox() {
+
+		// iniciar los item del combobox
+		for (int i = 0; i < 3; i++) {
+
+			this.Ordenar.removeAllItems();// limpiar el combobox
+			this.Ordenar.addItem("Ascendente");
+			this.Ordenar.addItem("Descendente");
+
+		}
+
+		this.Ordenar.setSelectedIndex(0);// seleccionado por defecto en el combo
+
+	}
+
+	public void presentarHistorial(int orden) {
+
+		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
+
+		this.BtnEliminar.setEnabled(false);// desactivar boton de eliminar
+
 		Conexion ObjConector = new Conexion("data/sqlitedatabase");
 		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
 
-		con.consultar("*");// consultar todo
+		// consultar por orden de fecha
+		con.consultar("fecha, inicio_caja, ventas, gastos, dinero_real, sobra_falta, cuadre_final", "fecha", orden);
 
-		RellenarTabla rt = new RellenarTabla(con.getResultadoConsulta(), this.Tabla);
+		rt.setDatos(con.getResultadoConsulta(), this.Tabla);
 		rt.llenarTabla();
-		
+		ObjConector.cerrar();// cerrar conexion
+		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
+	}
+
+	public void presentarHistorial(String fecha) {
+
+		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
+
+		this.BtnEliminar.setEnabled(false);// desactivar boton de eliminar
+
+		Conexion ObjConector = new Conexion("data/sqlitedatabase");
+		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
+
+		// consultar por fecha especifica
+		con.consultar("fecha, inicio_caja, ventas, gastos, dinero_real, sobra_falta, cuadre_final", "fecha", "=",
+				fecha);
+
+		rt.setDatos(con.getResultadoConsulta(), this.Tabla);
+		rt.llenarTabla();
+		ObjConector.cerrar();// cerrar conexion
+		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
+	}
+
+	private void presentarNota() {
+
+		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
+
+		// this.BtnEliminar.setEnabled(false);// desactivar boton de eliminar
+
+		Conexion ObjConector = new Conexion("data/sqlitedatabase");
+		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
+
+		con.consultar("nota", "fecha", "=", Tabla.getValueAt(Tabla.getSelectedRow(), 0).toString());// colunma 0 fila
+																									// seleccionada
+
+		try {
+			CtrlNota.setTexto(con.getResultadoConsulta().getString("nota").toString());
+		} catch (SQLException e) {
+
+			JOptionPane.showMessageDialog(this, "Error al mostrar la nota" + e.getMessage(), "Error Sqlite",
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		CtrlNota.setModal(true);// que sea modal
+		CtrlNota.bloquearTextArea(true);
+		CtrlNota.setVisible(true);
+		ObjConector.cerrar();// cerrar la conexion
+		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
+	}
+
+	private void eliminarRegistro() {
+
+		int opcion = JOptionPane.showConfirmDialog(this, "¿Esta seguro de eliminarlo?", "Eliminar",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+		if (opcion == JOptionPane.YES_OPTION) {
+			Conexion ObjConector = new Conexion("data/sqlitedatabase");
+			ClaseEliminar el = new ClaseEliminar(ObjConector.conectar(), "registro_cuadres");
+
+			el.borrar("fecha", Tabla.getValueAt(Tabla.getSelectedRow(), 0).toString());
+
+			ObjConector.cerrar();// cerrar conexion
+
+			presentarHistorial(ClaseConsultar.ASCENDENTE);// listar datos
+		}
+
+	}
+
+	// manejo de eventos
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		///////// combobox de order //////////////////
+		if (e.getSource().equals(Ordenar)) {
+
+			if (Ordenar.getSelectedItem().toString().equals("Ascendente")) {
+
+				presentarHistorial(ClaseConsultar.ASCENDENTE);// presentar en orden ascendente
+
+			} else {
+				presentarHistorial(ClaseConsultar.DESCENDENTE);// presentar en orden descendente
+			}
+
+		}
+
+		/////////// boton de ir/////////////
+		if (e.getSource().equals(BtnBuscar)) {
+			if (Fecha.getDate() != null) {// validar que no sea null la fecha
+				DateFormat formato = new SimpleDateFormat(Fecha.getDateFormatString());
+				presentarHistorial(formato.format(Fecha.getDate()));
+			}
+
+		}
+
+		//////////// boton de eliminar//////////////
+		if (e.getSource().equals(BtnEliminar)) {
+			eliminarRegistro();
+		}
+
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+		this.BtnEliminar.setEnabled(true);
+
+		if (Tabla.getSelectedColumn() == 7 && Tabla.getSelectedRow() > -1) {
+
+			System.out.println("Se pulso el boton de ver nota");
+
+			presentarNota();
+		}
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 }

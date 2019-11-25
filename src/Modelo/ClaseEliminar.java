@@ -49,7 +49,7 @@ public class ClaseEliminar {
             }
 
         } catch (HeadlessException | SQLException ex) {
-            System.out.println("Error al realizar la actualización por" + ex.getMessage());
+            System.out.println("Error al realizar la actualizacion por" + ex.getMessage());
             //JOptionPane.showMessageDialog(null, "Error al realizar la actualización por" + ex.getMessage());
         }
     }

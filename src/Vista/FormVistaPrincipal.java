@@ -21,6 +21,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.DebugGraphics;
+import javax.swing.JCheckBox;
 
 /*
  * VIsta principal del programa
@@ -40,6 +41,7 @@ public class FormVistaPrincipal extends JFrame {
 	public JButton BtnGuardar;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
+	public JCheckBox CheckNota;
 	
 
 	public FormVistaPrincipal() {
@@ -110,6 +112,10 @@ public class FormVistaPrincipal extends JFrame {
 		BtnGuardar.setFocusPainted(false);
 		BtnGuardar.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Guardar.png")));
 		panel_1.add(BtnGuardar);
+		
+		CheckNota = new JCheckBox("Nota");
+		CheckNota.setFont(new Font("Arial Black", Font.BOLD, 14));
+		panel_1.add(CheckNota);
 		
 		PanelCentral = new JPanel();
 		
