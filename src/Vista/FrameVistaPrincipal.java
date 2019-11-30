@@ -48,7 +48,7 @@ public class FrameVistaPrincipal extends JFrame {
 
 	public FrameVistaPrincipal() {
 		
-		setTitle("CuadreSoft V 1.0");
+		setTitle("CuadreSoft 1.0.1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(720,480);
 		setLocationRelativeTo(null);

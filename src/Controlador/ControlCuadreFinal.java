@@ -2,7 +2,6 @@ package Controlador;
 
 import java.util.ArrayList;
 
-
 /*
  * Control para mostrar detalles resumidos sobre el cuadre final
  */
@@ -45,15 +44,29 @@ public class ControlCuadreFinal extends PnlCuadreFinal {
 		this.datos.add(String.format("%.2f", Float.parseFloat(datosIniciales.get(3))));// gastos
 		this.datos.add("Dinero Real:");// etiqueta
 		this.datos.add(String.format("%.2f", dineroReal));// dinero real
-		if (diferenciaDinero > 0)
+
+		if (diferenciaDinero > 0) {
 			this.datos.add("Dinero Sobrante:");// etiqueta
-		else if (diferenciaDinero < 0)
+			this.datos.add(String.format("%.2f", diferenciaDinero).replaceAll("-", ""));// sobra o falta dinero(si sale
+			// negativo se elimina el signo)
+		} else if (diferenciaDinero < 0) {
 			this.datos.add("Dinero Faltante:");// etiqueta
-		else
+			this.datos.add(String.format("%.2f", diferenciaDinero).replaceAll("-", ""));// sobra o falta dinero(si sale
+			// negativo se elimina el signo)
+		} else if (Float.parseFloat(datosIniciales.get(3)) > Float.parseFloat(datosIniciales.get(2))) {// si gastos
+																										// mayores
+																										// a ventas
+			this.datos.add("Gastos > ventas:");// etiqueta
+			this.datos.add("Los gastos han consumido "
+					+ String.format("%.2f",
+							(Float.parseFloat(datosIniciales.get(3)) - Float.parseFloat(datosIniciales.get(2))))
+					+ " de caja");
+		} else {
 			this.datos.add("Cuadre Exacto:");// etiqueta
-		this.datos.add(String.format("%.2f", diferenciaDinero).replaceAll("-", ""));// sobra o falta dinero(si sale
-																					// negativo se
-		// elimina el sigono)
+			this.datos.add(String.format("%.2f", diferenciaDinero).replaceAll("-", ""));// sobra o falta dinero(si sale
+			// negativo se elimina el signo)
+		}
+
 		this.datos.add("Total Sacar de Caja:");// etiqueta
 		if (totalSacarCaja > 0) {// poner total solo si es mayor a cero
 			this.datos.add(String.format("%.2f", totalSacarCaja));
