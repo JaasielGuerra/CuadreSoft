@@ -86,6 +86,9 @@ public class ControlInicio {
 
 		if (contador.contarReg(ConstBaseDatos.rutaBD, "config") > 0) {
 			cargarConfig();
+			
+			//new ControlPrincipal().setVisible(true);
+			
 		} else {
 			new ControlAsistente().setVisible(true);
 		}

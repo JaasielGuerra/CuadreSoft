@@ -115,7 +115,7 @@ public class PnlHistorialCuadre extends JPanel {
 		BtnBuscar.setIconTextGap(10);
 		BtnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		BtnBuscar.setHorizontalTextPosition(SwingConstants.LEFT);
-		BtnBuscar.setIcon(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/Buscar.png")));
+		BtnBuscar.setIcon(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/buscar.png")));
 		BtnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BtnBuscar.setFocusPainted(false);
 		panel.add(BtnBuscar);

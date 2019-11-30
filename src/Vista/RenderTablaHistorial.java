@@ -64,7 +64,7 @@ public class RenderTablaHistorial extends DefaultTableCellRenderer {
 		if(column == 7) {// la ultima columna
 			
 				
-			boton = new JButton(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/Nota.png")));
+			boton = new JButton(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/nota.png")));
 			boton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			//boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			
