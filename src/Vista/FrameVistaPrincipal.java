@@ -24,6 +24,7 @@ import javax.swing.DebugGraphics;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 /*
  * VIsta principal del programa
@@ -47,6 +48,7 @@ public class FrameVistaPrincipal extends JFrame {
 	
 
 	public FrameVistaPrincipal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameVistaPrincipal.class.getResource("/Img/icono.png")));
 		
 		setTitle("CuadreSoft 1.0.1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,7 +131,8 @@ public class FrameVistaPrincipal extends JFrame {
 		contentPane.add(PanelCentral, BorderLayout.CENTER);
 		PanelCentral.setLayout(new BorderLayout(0, 0));
 		
-		lblNewLabel = new JLabel("CuadreSoft");
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/logo.png")));
 		lblNewLabel.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);

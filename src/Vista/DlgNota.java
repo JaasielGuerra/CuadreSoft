@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import java.awt.Font;
 import javax.swing.JScrollPane;
+import java.awt.Toolkit;
 
 public class DlgNota extends JDialog {
 
@@ -23,6 +24,8 @@ public class DlgNota extends JDialog {
 	 * Create the dialog.
 	 */
 	public DlgNota() {
+		setTitle("Notas");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DlgNota.class.getResource("/Img/icono.png")));
 		setSize(450, 300);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());

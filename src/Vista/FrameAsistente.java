@@ -27,6 +27,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Checkbox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class FrameAsistente extends JFrame {
 
@@ -44,6 +45,8 @@ public class FrameAsistente extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameAsistente() {
+		setTitle("Asistente de configuracion inicial");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAsistente.class.getResource("/Img/icono.png")));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 350);
@@ -127,14 +130,13 @@ public class FrameAsistente extends JFrame {
 		panel_1.add(panel_3);
 		panel_3.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JLabel lblNewLabel = new JLabel("Hacer que la ventana este siempre sobre cualquier otra:");
+		JLabel lblNewLabel = new JLabel("Hacer que la ventana este siempre sobre cualquier otra (Caracteristica beta):");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 		panel_3.add(lblNewLabel);
 		
 		CheckActivar = new JCheckBox("Activar");
 		CheckActivar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		CheckActivar.setSelected(true);
 		panel_3.add(CheckActivar);
 		
 		JPanel panel_4 = new JPanel();

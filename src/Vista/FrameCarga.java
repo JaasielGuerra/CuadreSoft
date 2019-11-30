@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class FrameCarga extends JFrame {
 
@@ -22,6 +23,7 @@ public class FrameCarga extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameCarga() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameCarga.class.getResource("/Img/icono.png")));
 		
 		setBackground(Color.WHITE);
 		setUndecorated(true);
