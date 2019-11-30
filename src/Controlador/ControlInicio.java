@@ -63,9 +63,11 @@ public class ControlInicio {
 		consulta.consultar("*");
 
 		try {
+
 			while (consulta.getResultadoConsulta().next()) {
 
-				c.setAlwaysOnTop(consulta.getResultadoConsulta().getInt("visible_top") == 1);
+				if (consulta.getResultadoConsulta().getString("llave").equals("visible_top"))
+					c.setAlwaysOnTop(consulta.getResultadoConsulta().getString("valor").equals("si"));
 
 			}
 

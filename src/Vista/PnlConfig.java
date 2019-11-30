@@ -15,9 +15,9 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 public class PnlConfig extends JPanel {
-	private JLabel lblNewLabel;
-	private JButton btnNewButton;
-	private JCheckBox checkBox;
+	public JLabel LblMsj;
+	public JCheckBox checkActivar;
+	public JButton BtnGuardarCambios;
 
 	/**
 	 * Create the panel.
@@ -35,10 +35,10 @@ public class PnlConfig extends JPanel {
 		label.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel.add(label);
 		
-		checkBox = new JCheckBox("Activar");
-		checkBox.setSelected(true);
-		checkBox.setFont(new Font("Tahoma", Font.BOLD, 12));
-		panel.add(checkBox);
+		checkActivar = new JCheckBox("Activar");
+		checkActivar.setSelected(true);
+		checkActivar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		panel.add(checkActivar);
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
@@ -46,18 +46,18 @@ public class PnlConfig extends JPanel {
 		flowLayout.setHgap(0);
 		add(panel_1, BorderLayout.SOUTH);
 		
-		btnNewButton = new JButton("Guardar cambios");
-		btnNewButton.setIcon(new ImageIcon(PnlConfig.class.getResource("/Img/cambios.png")));
-		btnNewButton.setFocusPainted(false);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panel_1.add(btnNewButton);
+		BtnGuardarCambios = new JButton("Guardar cambios");
+		BtnGuardarCambios.setIcon(new ImageIcon(PnlConfig.class.getResource("/Img/cambios.png")));
+		BtnGuardarCambios.setFocusPainted(false);
+		BtnGuardarCambios.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel_1.add(BtnGuardarCambios);
 		
-		lblNewLabel = new JLabel("Reiniciar para aplicar cambios");
-		lblNewLabel.setVisible(false);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewLabel, BorderLayout.CENTER);
-		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		LblMsj = new JLabel("Reiniciar para aplicar cambios");
+		LblMsj.setVisible(false);
+		LblMsj.setHorizontalAlignment(SwingConstants.CENTER);
+		add(LblMsj, BorderLayout.CENTER);
+		LblMsj.setForeground(Color.RED);
+		LblMsj.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 	}
 

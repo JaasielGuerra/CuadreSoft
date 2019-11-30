@@ -5,5 +5,6 @@
 
 -- TABLA DOS
 CREATE TABLE IF NOT EXISTS  config (
-	visible_top INTEGER NOT NULL 
+	llave TEXT NOT NULL ,
+	valor TEXT NOT NULL
 );

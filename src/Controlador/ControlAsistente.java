@@ -156,7 +156,8 @@ public class ControlAsistente extends FrameAsistente implements ActionListener {
 
 				in = new CInsertar(con.conectar(), "config");
 
-				in.agregarValor("visible_top", CheckActivar.isSelected() ? 1 : 0);// ? condicional
+				in.agregarValor("llave", "visible_top");
+				in.agregarValor("valor", CheckActivar.isSelected() ? "si" : "no");// condicion ?
 
 				in.ejecutarSQL();
 
@@ -172,7 +173,8 @@ public class ControlAsistente extends FrameAsistente implements ActionListener {
 			Conexion con = new Conexion(ConstBaseDatos.rutaBD);
 			CInsertar in = new CInsertar(con.conectar(), "config");
 
-			in.agregarValor("visible_top", CheckActivar.isSelected() ? 1 : 0);// ? condicional
+			in.agregarValor("llave", "visible_top");
+			in.agregarValor("valor", CheckActivar.isSelected() ? "si" : "no");// condicion ?
 
 			in.ejecutarSQL();
 
