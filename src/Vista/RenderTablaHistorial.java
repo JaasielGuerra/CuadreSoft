@@ -25,10 +25,10 @@ public class RenderTablaHistorial extends DefaultTableCellRenderer {
 		// todo el codigo para personalizar la tabla
 
 		// modificando el encabezado
-		table.getTableHeader().setFont(new Font("Arial Black", Font.PLAIN, 12));
-		table.getTableHeader().setForeground(Color.WHITE);
-		table.getTableHeader().setBackground(new Color(1, 87, 155));
-
+		table.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 14));
+		//table.getTableHeader().setForeground(new Color(255,255,255));
+		//table.getTableHeader().setBackground(new Color(1, 87, 155));
+		
 		// si una fila es seleccionada
 		if (isSelected) {
 			this.setBackground(new Color(187, 222, 251));
@@ -40,7 +40,7 @@ public class RenderTablaHistorial extends DefaultTableCellRenderer {
 		table.setRowHeight(25);
 
 		// modificando la letra de la tabla
-		this.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		this.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		this.setForeground(Color.BLACK);
 
 		// color de la cuadricula de la tabla
@@ -65,7 +65,7 @@ public class RenderTablaHistorial extends DefaultTableCellRenderer {
 			
 				
 			boton = new JButton(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/Nota.png")));
-			boton.setFont(new Font("Arial Black", Font.PLAIN, 14));
+			boton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			//boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			
 			return boton;

@@ -33,7 +33,7 @@ public class RenderTablaResumen extends DefaultTableCellRenderer {
 		
 		if(column == 0) {// modificar la primera columna
 			this.setBackground(new Color(1,87,155));
-			this.setFont(new Font("Arial Black", Font.PLAIN,14));
+			this.setFont(new Font("Tahoma", Font.BOLD,14));
 			this.setForeground(Color.white);
 			this.setHorizontalAlignment(SwingConstants.RIGHT);
 			table.getColumnModel().getColumn(0).setCellRenderer(this);

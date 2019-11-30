@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Brandon Pineda
  */
-public class ClaseEliminar {
+public class CEliminar {
 
     private Connection objConector = null;
     private String nombreTab = null;
@@ -21,7 +21,7 @@ public class ClaseEliminar {
     private StringBuilder SQL;
     private PreparedStatement preElim;
 
-    public ClaseEliminar(Connection objConector_, String nombreTab_) {//constructor
+    public CEliminar(Connection objConector_, String nombreTab_) {//constructor
 
         this.objConector = objConector_;
         this.nombreTab = nombreTab_;
@@ -39,6 +39,7 @@ public class ClaseEliminar {
             if (objConector != null) {
                 this.preElim = objConector.prepareStatement(SQL.toString());//agregar SQL
                 this.preElim.executeUpdate();
+                preElim.close();
                 System.out.println("Registro borrado correctamente de la tabla: "+this.nombreTab);
                 initVariables();//volver a inicializar
 

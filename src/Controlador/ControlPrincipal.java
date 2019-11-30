@@ -5,22 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
-
 import javax.swing.JOptionPane;
 
-import Modelo.ClaseConsultar;
-import Modelo.ClaseContarRegistros;
-import Modelo.ClaseInsertar;
-import Modelo.ClaseModificar;
+import Modelo.ConstBaseDatos;
+import Modelo.CConsultar;
+import Modelo.CContarRegistros;
+import Modelo.CInsertar;
+import Modelo.CModificar;
 import Modelo.Conexion;
-import Vista.FormVistaPrincipal;
-import Vista.PnlCuadreFinal;
-import Vista.PnlDesglose;
-import Vista.PnlHistorialCuadre;
-import Vista.PnlInicioCuadre;
+import Vista.CambiarPanel;
+import Vista.FrameVistaPrincipal;
 
-public class ControlPrincipal extends FormVistaPrincipal implements ActionListener {
+public class ControlPrincipal extends FrameVistaPrincipal implements ActionListener {
 
 	private CambiarPanel cambiar;
 	private ControlInicioCuadre CtrlInicioCuadre;
@@ -28,6 +24,7 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 	private ControlCuadreFinal CtrlCuadreFinal;
 	private ControlHistorial CtrlHistorialCuadre;
 	private ControlNota CtrlNota;
+	private ControlConfig CtrlConfig;
 	private int pnlSiguiente = 0;
 
 	public ControlPrincipal() {
@@ -38,12 +35,14 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		this.CtrlCuadreFinal = new ControlCuadreFinal();
 		this.CtrlHistorialCuadre = new ControlHistorial();
 		this.CtrlNota = new ControlNota();
+		this.CtrlConfig = new ControlConfig();
 
 		BtnCuadrar.addActionListener(this);
 		BtnHistorial.addActionListener(this);
 		BtnAtras.addActionListener(this);
 		BtnSig.addActionListener(this);
 		BtnGuardar.addActionListener(this);
+		BtnConfig.addActionListener(this);
 
 		BtnAtras.setEnabled(false);
 		PanelInferior.setVisible(false);
@@ -54,7 +53,7 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 
 	}
 
-	private void escogerPanel(int nPanel) {// para escoger los paneles
+	private void escogerPanel(int nPanel) {// para escoger los paneles con los botones siguiente y atras
 
 		switch (nPanel) {
 
@@ -108,8 +107,8 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursos en espera
 
-		Conexion ObjConector = new Conexion("data/sqlitedatabase");
-		ClaseModificar mod = new ClaseModificar(ObjConector.conectar(), "registro_cuadres");
+		Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
+		CModificar mod = new CModificar(ObjConector.conectar(), "registro_cuadres");
 
 		mod.agregarValor("fecha", CtrlInicioCuadre.getDatos().get(0));
 		mod.agregarValor("inicio_caja", CtrlInicioCuadre.getDatos().get(1));
@@ -138,8 +137,8 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 	private void guardarResumen() {
 
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursos en espera
-		Conexion ObjConector = new Conexion("data/sqlitedatabase");
-		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
+		Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
+		CConsultar con = new CConsultar(ObjConector.conectar(), "registro_cuadres");
 
 		con.consultar("fecha", "fecha", "=", CtrlInicioCuadre.getDatos().get(0));// consultar la fecha
 
@@ -192,7 +191,7 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 
 		String _nota = CtrlNota.getTexto();// guardar el texto del texArea
 
-		ClaseInsertar in = new ClaseInsertar(ObjConector.conectar(), "registro_cuadres");
+		CInsertar in = new CInsertar(ObjConector.conectar(), "registro_cuadres");
 
 		// agregando los valores
 		in.agregarValor("fecha", CtrlInicioCuadre.getDatos().get(0));
@@ -231,17 +230,17 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		if (e.getSource().equals(BtnHistorial)) {
 
 			this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
-			ClaseContarRegistros contar = new ClaseContarRegistros();// para contar si existe un registro
+			CContarRegistros contar = new CContarRegistros();// para contar si existe un registro
 
-			if (contar.contarReg("data/sqlitedatabase", "registro_cuadres") > 0) {// si existen registros
+			if (contar.contarReg(ConstBaseDatos.rutaBD, "registro_cuadres") > 0) {// si existen registros
 
 				PanelInferior.setVisible(false);
 
 				cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);
 				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(0);// seleccionado por defecto en el combo
 				this.CtrlHistorialCuadre.Fecha.setDate(null);
-				CtrlHistorialCuadre.presentarHistorial(ClaseConsultar.ASCENDENTE);// presentar el historial en
-																					// ascendente
+				CtrlHistorialCuadre.presentarHistorial(CConsultar.ASCENDENTE);// presentar el historial en
+																				// ascendente
 
 			} else {
 				this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
@@ -267,6 +266,12 @@ public class ControlPrincipal extends FormVistaPrincipal implements ActionListen
 		////////////// boton guardar resumen////////////////
 		if (e.getSource().equals(BtnGuardar)) {
 			guardarResumen();
+		}
+
+		////////////// boton configuracion////////////////
+		if (e.getSource().equals(BtnConfig)) {
+			PanelInferior.setVisible(false);
+			cambiar.cambiarPNL(PanelCentral, CtrlConfig);
 		}
 	}
 

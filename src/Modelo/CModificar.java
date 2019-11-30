@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Jaasiel Guerra
  */
-public class ClaseModificar {
+public class CModificar {
 
 	// Atributos de la clase
 	private Connection objConector = null;
@@ -23,7 +23,7 @@ public class ClaseModificar {
 	// private ArrayList<String> tipoCampo;
 
 	// constructor
-	public ClaseModificar(Connection objConector_, String nombreTab_) {
+	public CModificar(Connection objConector_, String nombreTab_) {
 
 		System.out.println("Conectado desde: " + this.getClass().getName());
 		this.objConector = objConector_;
@@ -117,6 +117,7 @@ public class ClaseModificar {
 			this.preMod.executeUpdate();// ejecutar SQL
 			resultado = true;
 			System.out.println("Datos actualizados correctamente en la tabla: " + nombreTab);
+			preMod.close();
 			initVariables();// limpiar para una nueva actualizacion
 
 		} catch (SQLException ex) {

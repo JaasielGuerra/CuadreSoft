@@ -11,15 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
 import Vista.PnlInicioCuadre;
-
-import java.util.Date;
-import java.util.zip.DataFormatException;
-/*
- * Control para el inicio de los datos del cuadre
- */
 
 public class ControlInicioCuadre extends PnlInicioCuadre implements FocusListener, KeyListener {
 

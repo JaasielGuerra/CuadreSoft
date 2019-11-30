@@ -34,7 +34,7 @@ public class DlgNota extends JDialog {
 			contentPanel.add(scrollPane, BorderLayout.CENTER);
 			{
 				textArea = new JTextArea();
-				textArea.setFont(new Font("Arial Black", Font.PLAIN, 14));
+				textArea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 				textArea.setLineWrap(true);
 				scrollPane.setViewportView(textArea);
 			}
@@ -45,12 +45,14 @@ public class DlgNota extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				BtnAceptar = new JButton("Aceptar");
+				BtnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 				BtnAceptar.setFocusPainted(false);
 				buttonPane.add(BtnAceptar);
 				getRootPane().setDefaultButton(BtnAceptar);
 			}
 			{
 				BtnCancelar = new JButton("Cancelar");
+				BtnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 				BtnCancelar.setFocusPainted(false);
 				buttonPane.add(BtnCancelar);
 			}

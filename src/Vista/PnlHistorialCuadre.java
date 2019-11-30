@@ -42,9 +42,9 @@ public class PnlHistorialCuadre extends JPanel {
 	private Component horizontalGlue;
 	private Component horizontalGlue_1;
 	private JLabel lblNewLabel;
-	private Component horizontalGlue_2;
 	private JPanel panel_1;
 	public JButton BtnEliminar;
+	private JLabel lblFecha;
 
 	/**
 	 * Create the panel.
@@ -81,22 +81,22 @@ public class PnlHistorialCuadre extends JPanel {
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		
 		lblNewLabel = new JLabel("Orden:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel.add(lblNewLabel);
-		
-		horizontalGlue_2 = Box.createHorizontalGlue();
-		horizontalGlue_2.setPreferredSize(new Dimension(10, 0));
-		panel.add(horizontalGlue_2);
 		
 		Ordenar = new JComboBox();
 		Ordenar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		Ordenar.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		Ordenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Ordenar.setPreferredSize(new Dimension(200, 25));
 		panel.add(Ordenar);
 		
 		horizontalGlue = Box.createHorizontalGlue();
 		horizontalGlue.setPreferredSize(new Dimension(15, 0));
 		panel.add(horizontalGlue);
+		
+		lblFecha = new JLabel("Fecha:");
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(lblFecha);
 		
 		Fecha = new JDateChooser();
 		Fecha.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -113,7 +113,7 @@ public class PnlHistorialCuadre extends JPanel {
 		BtnBuscar = new JButton("Ir");
 		BtnBuscar.setMargin(new Insets(0, 14, 0, 14));
 		BtnBuscar.setIconTextGap(10);
-		BtnBuscar.setFont(new Font("Arial Black", Font.BOLD, 14));
+		BtnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		BtnBuscar.setHorizontalTextPosition(SwingConstants.LEFT);
 		BtnBuscar.setIcon(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/Buscar.png")));
 		BtnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -125,6 +125,8 @@ public class PnlHistorialCuadre extends JPanel {
 		panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		
 		BtnEliminar = new JButton("Eliminar");
+		BtnEliminar.setIcon(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/eliminar.png")));
+		BtnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		BtnEliminar.setFocusPainted(false);
 		panel_1.add(BtnEliminar);
 

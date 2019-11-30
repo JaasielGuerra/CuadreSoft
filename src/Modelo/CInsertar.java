@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Jassiel Guerra
  */
-public class ClaseInsertar {
+public class CInsertar {
 
     /**
      * Variables que se utilizaran en el proceso de insercion
@@ -27,7 +27,7 @@ public class ClaseInsertar {
     // private byte[] dato;
     // short auxNumDatos; //variable auxilirias para el numero de datos a insertar
 
-    public ClaseInsertar(Connection objConector, String nombreTab_) {// recibe el objeto de conexion y nombre de la
+    public CInsertar(Connection objConector, String nombreTab_) {// recibe el objeto de conexion y nombre de la
         // tabla
 
         /**
@@ -112,6 +112,7 @@ public class ClaseInsertar {
             this.preInsert.execute();// ejecutar SQL
             resultado = true;
             System.out.println("Datos insertados correctamente en la tabla: " + nombreTab);
+            preInsert.close();
             initVariables();// limpiar para una nueva insercion
 
         } catch (SQLException ex) {

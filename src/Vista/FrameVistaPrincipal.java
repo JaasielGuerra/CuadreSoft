@@ -22,12 +22,14 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.DebugGraphics;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /*
  * VIsta principal del programa
  */
 
-public class FormVistaPrincipal extends JFrame {
+public class FrameVistaPrincipal extends JFrame {
 
 	
 	
@@ -39,12 +41,12 @@ public class FormVistaPrincipal extends JFrame {
 	public JPanel PanelCentral;
 	public JPanel PanelInferior;
 	public JButton BtnGuardar;
-	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	public JCheckBox CheckNota;
+	public JButton BtnConfig;
 	
 
-	public FormVistaPrincipal() {
+	public FrameVistaPrincipal() {
 		
 		setTitle("CuadreSoft");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,26 +61,30 @@ public class FormVistaPrincipal extends JFrame {
 		
 		JPanel PanelSup = new JPanel();
 		contentPane.add(PanelSup, BorderLayout.NORTH);
-		PanelSup.setLayout(new BoxLayout(PanelSup, BoxLayout.X_AXIS));
+		PanelSup.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		
 		
-		BtnCuadrar = new JButton("Cuadrar");
+		BtnCuadrar = new JButton("CUADRAR");
+		BtnCuadrar.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/cuadre.png")));
+		BtnCuadrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		BtnCuadrar.setFocusPainted(false);
-		BtnCuadrar.setFont(new Font("Arial Black", Font.PLAIN, 14));
-		BtnCuadrar.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Cuadrar.png")));
+		BtnCuadrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		PanelSup.add(BtnCuadrar);
 		
-		BtnHistorial = new JButton("Historial de cuadres");
+		BtnHistorial = new JButton("HISTORIAL DE CUADRES");
 		BtnHistorial.setFocusPainted(false);
-		BtnHistorial.setFont(new Font("Arial Black", Font.PLAIN, 14));
-		BtnHistorial.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Historial.png")));
+		BtnHistorial.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnHistorial.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/historial.png")));
 		PanelSup.add(BtnHistorial);
 		
-		btnNewButton = new JButton("Configuracion");
-		btnNewButton.setFocusPainted(false);
-		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 14));
-		btnNewButton.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Configucaion.png")));
-		PanelSup.add(btnNewButton);
+		BtnConfig = new JButton("CONFIGURACION");
+		BtnConfig.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/ajuste.png")));
+		BtnConfig.setFocusPainted(false);
+		BtnConfig.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		PanelSup.add(BtnConfig);
 		
 		PanelInferior = new JPanel();
 		contentPane.add(PanelInferior, BorderLayout.SOUTH);
@@ -91,8 +97,8 @@ public class FormVistaPrincipal extends JFrame {
 		
 		BtnAtras = new JButton("Atr\u00E1s");
 		BtnAtras.setFocusPainted(false);
-		BtnAtras.setFont(new Font("Arial Black", Font.PLAIN, 14));
-		BtnAtras.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Atras.png")));
+		BtnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnAtras.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/atras.png")));
 		BtnAtras.setHorizontalTextPosition(SwingConstants.RIGHT);
 		panel.add(BtnAtras);
 		
@@ -103,18 +109,18 @@ public class FormVistaPrincipal extends JFrame {
 		
 		BtnSig = new JButton("Siguiente");
 		BtnSig.setFocusPainted(false);
-		BtnSig.setFont(new Font("Arial Black", Font.PLAIN, 14));
-		BtnSig.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Siguiente.png")));
+		BtnSig.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnSig.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/sigueinte.png")));
 		BtnSig.setHorizontalTextPosition(SwingConstants.LEFT);
 		panel_1.add(BtnSig);
 		
 		BtnGuardar = new JButton("");
 		BtnGuardar.setFocusPainted(false);
-		BtnGuardar.setIcon(new ImageIcon(FormVistaPrincipal.class.getResource("/Img/Guardar.png")));
+		BtnGuardar.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/guardar.png")));
 		panel_1.add(BtnGuardar);
 		
-		CheckNota = new JCheckBox("Nota");
-		CheckNota.setFont(new Font("Arial Black", Font.BOLD, 14));
+		CheckNota = new JCheckBox("NOTA");
+		CheckNota.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panel_1.add(CheckNota);
 		
 		PanelCentral = new JPanel();
@@ -125,7 +131,7 @@ public class FormVistaPrincipal extends JFrame {
 		
 		lblNewLabel = new JLabel("CuadreSoft");
 		lblNewLabel.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 60));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		PanelCentral.add(lblNewLabel, BorderLayout.CENTER);

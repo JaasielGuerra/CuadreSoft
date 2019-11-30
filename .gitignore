@@ -24,9 +24,5 @@ hs_err_pid*
 /bin/
 
 #dir not ignore
-<<<<<<< HEAD
-!/lib/*.jar
-=======
 !/lib/*
->>>>>>> b49485188d6c33ccf8e1bd59504008d31b0d5dd8
 

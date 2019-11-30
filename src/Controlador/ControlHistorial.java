@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import Modelo.ClaseConsultar;
-import Modelo.ClaseContarRegistros;
-import Modelo.ClaseEliminar;
+import Modelo.ConstBaseDatos;
+import Modelo.CConsultar;
+import Modelo.CEliminar;
 import Modelo.Conexion;
 import Vista.PnlHistorialCuadre;
 
@@ -22,7 +22,7 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 	private ControlNota CtrlNota;
 	private RellenarTabla rt;
-
+	
 	public ControlHistorial() {
 
 		initCombobox();// llenar el combo
@@ -62,8 +62,8 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 		this.BtnEliminar.setEnabled(false);// desactivar boton de eliminar
 
-		Conexion ObjConector = new Conexion("data/sqlitedatabase");
-		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
+		Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
+		CConsultar con = new CConsultar(ObjConector.conectar(), "registro_cuadres");
 
 		// consultar por orden de fecha
 		con.consultar("fecha, inicio_caja, ventas, gastos, dinero_real, sobra_falta, cuadre_final", "fecha", orden);
@@ -80,8 +80,8 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 		this.BtnEliminar.setEnabled(false);// desactivar boton de eliminar
 
-		Conexion ObjConector = new Conexion("data/sqlitedatabase");
-		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
+		Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
+		CConsultar con = new CConsultar(ObjConector.conectar(), "registro_cuadres");
 
 		// consultar por fecha especifica
 		con.consultar("fecha, inicio_caja, ventas, gastos, dinero_real, sobra_falta, cuadre_final", "fecha", "=",
@@ -99,8 +99,8 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 		// this.BtnEliminar.setEnabled(false);// desactivar boton de eliminar
 
-		Conexion ObjConector = new Conexion("data/sqlitedatabase");
-		ClaseConsultar con = new ClaseConsultar(ObjConector.conectar(), "registro_cuadres");
+		Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
+		CConsultar con = new CConsultar(ObjConector.conectar(), "registro_cuadres");
 
 		con.consultar("nota", "fecha", "=", Tabla.getValueAt(Tabla.getSelectedRow(), 0).toString());// colunma 0 fila
 																									// seleccionada
@@ -126,14 +126,14 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 		if (opcion == JOptionPane.YES_OPTION) {
-			Conexion ObjConector = new Conexion("data/sqlitedatabase");
-			ClaseEliminar el = new ClaseEliminar(ObjConector.conectar(), "registro_cuadres");
+			Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
+			CEliminar el = new CEliminar(ObjConector.conectar(), "registro_cuadres");
 
 			el.borrar("fecha", Tabla.getValueAt(Tabla.getSelectedRow(), 0).toString());
 
 			ObjConector.cerrar();// cerrar conexion
 
-			presentarHistorial(ClaseConsultar.ASCENDENTE);// listar datos
+			presentarHistorial(CConsultar.ASCENDENTE);// listar datos
 		}
 
 	}
@@ -147,10 +147,10 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 			if (Ordenar.getSelectedItem().toString().equals("Ascendente")) {
 
-				presentarHistorial(ClaseConsultar.ASCENDENTE);// presentar en orden ascendente
+				presentarHistorial(CConsultar.ASCENDENTE);// presentar en orden ascendente
 
 			} else {
-				presentarHistorial(ClaseConsultar.DESCENDENTE);// presentar en orden descendente
+				presentarHistorial(CConsultar.DESCENDENTE);// presentar en orden descendente
 			}
 
 		}

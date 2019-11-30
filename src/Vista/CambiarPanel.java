@@ -1,7 +1,7 @@
 /*
  * Clase encargada para cambiar de paneles
  */
-package Controlador;
+package Vista;
 
 import javax.swing.JPanel;
 

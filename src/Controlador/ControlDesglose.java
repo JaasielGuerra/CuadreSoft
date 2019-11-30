@@ -4,8 +4,6 @@ package Controlador;
  * Control para el panel del desglose de dinero
  */
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -13,9 +11,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
-
 import Vista.PnlDesglose;
 
 public class ControlDesglose extends PnlDesglose implements FocusListener, KeyListener {

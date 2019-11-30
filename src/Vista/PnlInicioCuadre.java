@@ -71,11 +71,11 @@ public class PnlInicioCuadre extends JPanel {
 		panel_4.setFont(new Font("Arial Black", Font.PLAIN, 12));
 
 		panel_4.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Datos Iniciales",
-				TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial Black", Font.PLAIN, 12), new Color(0, 0, 0)));
+				TitledBorder.CENTER, TitledBorder.TOP, new Font("Tahoma", Font.PLAIN, 12), new Color(0, 0, 0)));
 		add(panel_4, BorderLayout.CENTER);
 
 		JLabel lblNewLabel = new JLabel("Fecha");
-		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 		Fecha = new JDateChooser();
 		Fecha.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -84,7 +84,7 @@ public class PnlInicioCuadre extends JPanel {
 		Fecha.setDate(date);
 
 		JLabel lblNewLabel_1 = new JLabel("Inicio Caja");
-		lblNewLabel_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 		InicioCaja = new JFormattedTextField(decimalFormato);
 		InicioCaja.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -99,10 +99,10 @@ public class PnlInicioCuadre extends JPanel {
 		Gastos.setText("0.00");
 
 		JLabel lblNewLabel_2 = new JLabel("Ventas");
-		lblNewLabel_2.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 		JLabel lblNewLabel_3 = new JLabel("Gastos");
-		lblNewLabel_3.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		panel_4.setLayout(new GridLayout(4, 2, 0, 5));
 		panel_4.add(lblNewLabel);
 		panel_4.add(Fecha);

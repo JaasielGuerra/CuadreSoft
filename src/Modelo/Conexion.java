@@ -3,6 +3,7 @@
  */
 package Modelo;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,26 +20,30 @@ public class Conexion {
      * Variable de tipo conexion para la base de datos
      */
     private Connection objConector = null;
-    private String nomDb;
+    private String rutaDb;
+    
+    
 
-    public Conexion(String nomDB)//recibe nombre de la DB
+    public Conexion(String ruta)//recibe ruta de la DB
     {
-        this.nomDb = nomDB;
-
+        this.rutaDb = ruta;
     }
-
+    
     public Connection conectar() {
         // con la funcion property obtenemos la ubcación del archivo ejecutable.
         String url = System.getProperty("user.dir");
+        
+       
+        
         try {
-
+        	       	
             //Cargamos la conexion pasando la ruta de la base de datos
-            objConector = DriverManager.getConnection("jdbc:sqlite:" + url + "/" + this.nomDb + ".db");
+            objConector = DriverManager.getConnection("jdbc:sqlite:" + url + "\\" + this.rutaDb + ".db");
 
             //Validamos si la objConectorexión es nula
             if (objConector != null) {
                 // solo por temas de control mostramos el estado de la conexión
-                System.out.println("Base de datos en: " + url + "/" + this.nomDb + ".db");
+                System.out.println("Base de datos en: " + url + "\\" + this.rutaDb + ".db");
                 //return objConector;
             }
         } // control de errores de tipo slq

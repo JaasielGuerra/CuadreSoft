@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author Brandon Pineda
  * @author Jaasiel Guerra
  */
-public class ClaseConsultar {
+public class CConsultar {
 
 	// atributos
 	private Connection objConector = null;
@@ -27,7 +27,7 @@ public class ClaseConsultar {
 	public static final int ASCENDENTE = 1;
 	public static final int DESCENDENTE = 0;
 
-	public ClaseConsultar(Connection objConector, String nombreTab_) {// constructor
+	public CConsultar(Connection objConector, String nombreTab_) {// constructor
 
 		this.objConector = objConector;
 		this.nombreTab = nombreTab_;
@@ -46,12 +46,12 @@ public class ClaseConsultar {
 			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
 			preConsulta = objConector.prepareStatement(SQL.toString());
 			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
-
+			// preConsulta.close();
 		} catch (SQLException ex) {
 			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
 			System.err.println("Tabla :" + this.nombreTab);
 			resultadoConsulta = null;
-		}
+		} 
 
 		// return resultadoConsulta;//retorna toda la consulta
 	}
@@ -74,6 +74,7 @@ public class ClaseConsultar {
 			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
 			preConsulta = objConector.prepareStatement(SQL.toString());
 			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
+			//preConsulta.close();
 
 		} catch (SQLException ex) {
 			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
@@ -97,6 +98,7 @@ public class ClaseConsultar {
 			preConsulta = objConector.prepareStatement(SQL.toString());
 			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
 			System.out.println("Datos consultado correctamente de la tabla: " + this.nombreTab);
+			//preConsulta.close();
 
 		} catch (SQLException ex) {
 			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
@@ -118,6 +120,7 @@ public class ClaseConsultar {
 			preConsulta = objConector.prepareStatement(SQL.toString());
 			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
 			System.out.println("Datos consultado correctamente de la tabla: " + this.nombreTab);
+			//preConsulta.close();
 
 		} catch (SQLException ex) {
 			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
