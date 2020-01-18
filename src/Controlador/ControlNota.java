@@ -33,7 +33,7 @@ public class ControlNota extends DlgNota implements ActionListener, WindowListen
 	public void setTexto(String txt) {// insertar texto en el textArea
 		textArea.setText(txt);
 	}
-	
+
 	public void bloquearTextArea(boolean arg) {
 		textArea.setEditable(!arg);
 	}

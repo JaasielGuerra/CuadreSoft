@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.awt.AWTUtilities;
+//import com.sun.awt.AWTUtilities;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -34,7 +34,7 @@ public class FrameCarga extends JFrame {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		AWTUtilities.setWindowOpaque(this, false);
+		//AWTUtilities.setWindowOpaque(this, false);
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel_1 = new JLabel("Inicializando datos, por favor espere...");

@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import Modelo.ConstBaseDatos;
@@ -26,15 +28,20 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 	private ControlNota CtrlNota;
 	private ControlConfig CtrlConfig;
 	private int pnlSiguiente = 0;
+	private boolean visibleOnTop = false;
 
-	public ControlPrincipal() {
-
+	public ControlPrincipal(boolean visibleOnTop) {
+		
+		this.visibleOnTop = visibleOnTop;
+		this.setAlwaysOnTop(visibleOnTop);
 		this.cambiar = new CambiarPanel();
 		this.CtrlInicioCuadre = new ControlInicioCuadre();
 		this.CtrlDesglose = new ControlDesglose();
 		this.CtrlCuadreFinal = new ControlCuadreFinal();
-		this.CtrlHistorialCuadre = new ControlHistorial();
+		this.CtrlHistorialCuadre = new ControlHistorial(visibleOnTop);
 		this.CtrlNota = new ControlNota();
+		this.CtrlNota.setAlwaysOnTop(this.visibleOnTop);
+		
 		this.CtrlConfig = new ControlConfig();
 
 		BtnCuadrar.addActionListener(this);
@@ -236,11 +243,9 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 
 				PanelInferior.setVisible(false);
 
+				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(1);// presentar en orden descendente
+				this.CtrlHistorialCuadre.Fecha.setDate(new Date());
 				cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);
-				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(0);// seleccionado por defecto en el combo
-				this.CtrlHistorialCuadre.Fecha.setDate(null);
-				CtrlHistorialCuadre.presentarHistorial(CConsultar.ASCENDENTE);// presentar el historial en
-																				// ascendente
 
 			} else {
 				this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto

@@ -16,6 +16,6 @@ y para el almacenamiento de la data utiliza el gestor de base de datos sqlite3
 
 **Requitos para desarrollo del proyecto**
 
-- Java JDK 8
+- Java SE JDK 8
 - Eclipse IDE Version: 2019-09
 - Cualquier gestor de base de datos sqlite de preferencia (recomendado: DB Browser for sqlite)

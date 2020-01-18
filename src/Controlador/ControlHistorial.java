@@ -23,11 +23,12 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 	private ControlNota CtrlNota;
 	private RellenarTabla rt;
 	
-	public ControlHistorial() {
+	public ControlHistorial(boolean visibleTop) {
 
 		initCombobox();// llenar el combo
 
 		this.CtrlNota = new ControlNota();
+		this.CtrlNota.setAlwaysOnTop(visibleTop);
 		this.rt = new RellenarTabla();
 
 		this.BtnEliminar.setEnabled(false);
@@ -52,7 +53,7 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 		}
 
-		this.Ordenar.setSelectedIndex(0);// seleccionado por defecto en el combo
+		this.Ordenar.setSelectedIndex(1);// seleccionado por defecto en el combo
 
 	}
 
@@ -133,7 +134,7 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 			ObjConector.cerrar();// cerrar conexion
 
-			presentarHistorial(CConsultar.ASCENDENTE);// listar datos
+			presentarHistorial(CConsultar.DESCENDENTE);// listar datos
 		}
 
 	}

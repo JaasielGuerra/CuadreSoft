@@ -55,7 +55,8 @@ public class ControlInicio {
 
 	private void cargarConfig() {// servira para cargar la configuracion de la base de datos
 
-		ControlPrincipal c = new ControlPrincipal();
+		
+		boolean visibleTop = false;
 
 		Conexion con = new Conexion(ConstBaseDatos.rutaBD);
 		CConsultar consulta = new CConsultar(con.conectar(), "config");
@@ -67,10 +68,11 @@ public class ControlInicio {
 			while (consulta.getResultadoConsulta().next()) {
 
 				if (consulta.getResultadoConsulta().getString("llave").equals("visible_top"))
-					c.setAlwaysOnTop(consulta.getResultadoConsulta().getString("valor").equals("si"));
+					visibleTop = consulta.getResultadoConsulta().getString("valor").equals("si");
 
 			}
-
+			
+			ControlPrincipal c = new ControlPrincipal(visibleTop);
 			c.setVisible(true);
 
 		} catch (SQLException e) {

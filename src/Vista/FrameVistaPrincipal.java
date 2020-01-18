@@ -50,7 +50,7 @@ public class FrameVistaPrincipal extends JFrame {
 	public FrameVistaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameVistaPrincipal.class.getResource("/Img/icono.png")));
 		
-		setTitle("CuadreSoft 1.0.1");
+		setTitle("CuadreSoft 1.0.2");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(720,480);
 		setLocationRelativeTo(null);

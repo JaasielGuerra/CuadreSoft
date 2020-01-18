@@ -64,10 +64,9 @@ public class ControlAsistente extends FrameAsistente implements ActionListener {
 
 			llenarBD();// se llama el metodo para inicializar la base de datos
 
-			ControlPrincipal c = new ControlPrincipal();// se instancia el control principal
+			ControlPrincipal c = new ControlPrincipal(CheckActivar.isSelected());// se instancia el control principal
 			c.setVisible(true);
-			c.setAlwaysOnTop(CheckActivar.isSelected());
-
+			
 		} else if (RBtnCero.isSelected()) {
 
 			valido = true;
@@ -76,9 +75,8 @@ public class ControlAsistente extends FrameAsistente implements ActionListener {
 
 			llenarBD();
 
-			ControlPrincipal c = new ControlPrincipal();// se instancia el control principal
+			ControlPrincipal c = new ControlPrincipal(CheckActivar.isSelected());// se instancia el control principal
 			c.setVisible(true);
-			c.setAlwaysOnTop(CheckActivar.isSelected());
 
 		} else {
 
