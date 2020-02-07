@@ -50,6 +50,7 @@ public class PnlHistorialCuadre extends JPanel {
 	 * Create the panel.
 	 */
 	public PnlHistorialCuadre() {
+		setPreferredSize(new Dimension(600, 300));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -81,25 +82,26 @@ public class PnlHistorialCuadre extends JPanel {
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		
 		lblNewLabel = new JLabel("Orden:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		panel.add(lblNewLabel);
 		
 		Ordenar = new JComboBox();
 		Ordenar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		Ordenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Ordenar.setFont(new Font("Dialog", Font.PLAIN, 14));
 		Ordenar.setPreferredSize(new Dimension(200, 25));
 		panel.add(Ordenar);
 		
 		horizontalGlue = Box.createHorizontalGlue();
-		horizontalGlue.setPreferredSize(new Dimension(15, 0));
+		horizontalGlue.setMinimumSize(new Dimension(50, 0));
+		horizontalGlue.setPreferredSize(new Dimension(50, 0));
 		panel.add(horizontalGlue);
 		
 		lblFecha = new JLabel("Fecha:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblFecha.setFont(new Font("Dialog", Font.PLAIN, 12));
 		panel.add(lblFecha);
 		
 		Fecha = new JDateChooser();
-		Fecha.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Fecha.setFont(new Font("Dialog", Font.PLAIN, 14));
 		Fecha.setDateFormatString("yyyy-MM-dd");
 		Fecha.setPreferredSize(new Dimension(150, 25));
 		BorderLayout bl_Fecha = (BorderLayout) Fecha.getLayout();
@@ -107,6 +109,7 @@ public class PnlHistorialCuadre extends JPanel {
 		panel.add(Fecha);
 		
 		horizontalGlue_1 = Box.createHorizontalGlue();
+		horizontalGlue_1.setMinimumSize(new Dimension(15, 0));
 		horizontalGlue_1.setPreferredSize(new Dimension(15, 0));
 		panel.add(horizontalGlue_1);
 		
@@ -125,8 +128,10 @@ public class PnlHistorialCuadre extends JPanel {
 		panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		
 		BtnEliminar = new JButton("Eliminar");
+		BtnEliminar.setMinimumSize(new Dimension(100, 30));
+		BtnEliminar.setPreferredSize(new Dimension(100, 30));
 		BtnEliminar.setIcon(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/eliminar.png")));
-		BtnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnEliminar.setFont(new Font("Dialog", Font.PLAIN, 12));
 		BtnEliminar.setFocusPainted(false);
 		panel_1.add(BtnEliminar);
 

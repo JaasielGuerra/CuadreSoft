@@ -38,7 +38,7 @@ public class FrameCarga extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel_1 = new JLabel("Inicializando datos, por favor espere...");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		contentPane.add(lblNewLabel_1, BorderLayout.CENTER);
 	}
 

@@ -25,6 +25,8 @@ import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import java.awt.Dimension;
+import java.awt.Cursor;
 
 /*
  * VIsta principal del programa
@@ -50,7 +52,7 @@ public class FrameVistaPrincipal extends JFrame {
 	public FrameVistaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameVistaPrincipal.class.getResource("/Img/icono.png")));
 		
-		setTitle("CuadreSoft 1.0.2");
+		setTitle("CuadreSoft 1.0.3");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(720,480);
 		setLocationRelativeTo(null);
@@ -62,30 +64,46 @@ public class FrameVistaPrincipal extends JFrame {
 		
 		
 		JPanel PanelSup = new JPanel();
+		//PanelSup.setBackground(new Color(232,232,232));
 		contentPane.add(PanelSup, BorderLayout.NORTH);
-		PanelSup.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		PanelSup.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		
-		BtnCuadrar = new JButton("CUADRAR");
+		BtnCuadrar = new JButton("Cuadrar");
+		BtnCuadrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnCuadrar.setContentAreaFilled(false);
+		BtnCuadrar.setPreferredSize(new Dimension(150, 30));
+		BtnCuadrar.setMinimumSize(new Dimension(150, 30));
+		BtnCuadrar.setBorder(null);
 		BtnCuadrar.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/cuadre.png")));
 		BtnCuadrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		BtnCuadrar.setFocusPainted(false);
-		BtnCuadrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnCuadrar.setFont(new Font("Dialog", Font.PLAIN, 14));
 		PanelSup.add(BtnCuadrar);
 		
-		BtnHistorial = new JButton("HISTORIAL DE CUADRES");
+		BtnHistorial = new JButton("Reporter\u00EDa");
+		BtnHistorial.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnHistorial.setContentAreaFilled(false);
+		BtnHistorial.setMinimumSize(new Dimension(150, 30));
+		BtnHistorial.setPreferredSize(new Dimension(150, 30));
+		BtnHistorial.setBorder(null);
 		BtnHistorial.setFocusPainted(false);
-		BtnHistorial.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnHistorial.setFont(new Font("Dialog", Font.PLAIN, 14));
 		BtnHistorial.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/historial.png")));
 		PanelSup.add(BtnHistorial);
 		
-		BtnConfig = new JButton("CONFIGURACION");
+		BtnConfig = new JButton("Configuraci\u00F3n");
+		BtnConfig.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		BtnConfig.setContentAreaFilled(false);
+		BtnConfig.setPreferredSize(new Dimension(150, 30));
+		BtnConfig.setMinimumSize(new Dimension(150, 30));
+		BtnConfig.setBorder(null);
 		BtnConfig.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/ajuste.png")));
 		BtnConfig.setFocusPainted(false);
-		BtnConfig.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnConfig.setFont(new Font("Dialog", Font.PLAIN, 14));
 		PanelSup.add(BtnConfig);
 		
 		PanelInferior = new JPanel();
@@ -98,9 +116,11 @@ public class FrameVistaPrincipal extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
 		BtnAtras = new JButton("Atr\u00E1s");
+		BtnAtras.setMinimumSize(new Dimension(150, 35));
+		BtnAtras.setPreferredSize(new Dimension(150, 35));
 		BtnAtras.setFocusPainted(false);
-		BtnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		BtnAtras.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/atras.png")));
+		BtnAtras.setFont(new Font("Dialog", Font.PLAIN, 12));
+		BtnAtras.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/Atras.png")));
 		BtnAtras.setHorizontalTextPosition(SwingConstants.RIGHT);
 		panel.add(BtnAtras);
 		
@@ -110,19 +130,23 @@ public class FrameVistaPrincipal extends JFrame {
 		panel_1.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		BtnSig = new JButton("Siguiente");
+		BtnSig.setMinimumSize(new Dimension(150, 35));
+		BtnSig.setPreferredSize(new Dimension(150, 35));
 		BtnSig.setFocusPainted(false);
-		BtnSig.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		BtnSig.setFont(new Font("Dialog", Font.PLAIN, 12));
 		BtnSig.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/sigueinte.png")));
 		BtnSig.setHorizontalTextPosition(SwingConstants.LEFT);
 		panel_1.add(BtnSig);
 		
 		BtnGuardar = new JButton("");
+		BtnGuardar.setMinimumSize(new Dimension(35, 35));
+		BtnGuardar.setPreferredSize(new Dimension(35, 35));
 		BtnGuardar.setFocusPainted(false);
-		BtnGuardar.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/guardar.png")));
+		BtnGuardar.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/Guardar.png")));
 		panel_1.add(BtnGuardar);
 		
 		CheckNota = new JCheckBox("NOTA");
-		CheckNota.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		CheckNota.setFont(new Font("Dialog", Font.BOLD, 14));
 		panel_1.add(CheckNota);
 		
 		PanelCentral = new JPanel();

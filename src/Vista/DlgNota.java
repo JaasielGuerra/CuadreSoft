@@ -11,6 +11,8 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import java.awt.Toolkit;
+import java.awt.Dimension;
+import java.awt.Color;
 
 public class DlgNota extends JDialog {
 
@@ -48,6 +50,8 @@ public class DlgNota extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				BtnAceptar = new JButton("Aceptar");
+				BtnAceptar.setBackground(new Color(129,199,132));
+				BtnAceptar.setPreferredSize(new Dimension(80, 30));
 				BtnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 				BtnAceptar.setFocusPainted(false);
 				buttonPane.add(BtnAceptar);
@@ -55,6 +59,8 @@ public class DlgNota extends JDialog {
 			}
 			{
 				BtnCancelar = new JButton("Cancelar");
+				BtnCancelar.setBackground(new Color(229,115,115));
+				BtnCancelar.setPreferredSize(new Dimension(80, 30));
 				BtnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 				BtnCancelar.setFocusPainted(false);
 				buttonPane.add(BtnCancelar);

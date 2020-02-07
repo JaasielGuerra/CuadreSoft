@@ -31,7 +31,7 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 	private boolean visibleOnTop = false;
 
 	public ControlPrincipal(boolean visibleOnTop) {
-		
+
 		this.visibleOnTop = visibleOnTop;
 		this.setAlwaysOnTop(visibleOnTop);
 		this.cambiar = new CambiarPanel();
@@ -41,7 +41,7 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 		this.CtrlHistorialCuadre = new ControlHistorial(visibleOnTop);
 		this.CtrlNota = new ControlNota();
 		this.CtrlNota.setAlwaysOnTop(this.visibleOnTop);
-		
+
 		this.CtrlConfig = new ControlConfig();
 
 		BtnCuadrar.addActionListener(this);
@@ -276,6 +276,11 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 		////////////// boton configuracion////////////////
 		if (e.getSource().equals(BtnConfig)) {
 			PanelInferior.setVisible(false);
+
+			// si el mensaje de reiniciar no es visible, se pone seleccionado el check
+			if (!CtrlConfig.LblMsj.isVisible())
+				CtrlConfig.checkActivar.setSelected(true);
+
 			cambiar.cambiarPNL(PanelCentral, CtrlConfig);
 		}
 	}

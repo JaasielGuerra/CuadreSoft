@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.EmptyBorder;
 
 public class PnlCuadreFinal extends JPanel {
 	public JTable Tabla;
@@ -19,12 +20,14 @@ public class PnlCuadreFinal extends JPanel {
 	 * Create the panel.
 	 */
 	public PnlCuadreFinal() {
+		setBorder(null);
 		setLayout(new BorderLayout(0, 0));
 		
 		//DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
 		//tcr.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		Tabla = new JTable();
+		Tabla.setBorder(null);
 		add(Tabla, BorderLayout.CENTER);
 		Tabla.setModel(new DefaultTableModel(
 			new Object[][] {

@@ -15,25 +15,26 @@ import java.awt.Font;
 
 public class RenderTablaResumen extends DefaultTableCellRenderer {
 	
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
 		
 		
 		super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		
-		//todo el codigo para personalizar la tabla
+		/////////////todo el codigo para personalizar la tabla/////////////
 		
 		
 		
 		if(isSelected) {
-			this.setBackground(new Color(187,222,251));
+			this.setBackground(new Color(245,245,245));
 		}else {
 			this.setBackground(Color.WHITE);
 		}
 		
 		if(column == 0) {// modificar la primera columna
-			this.setBackground(new Color(1,87,155));
-			this.setFont(new Font("Tahoma", Font.BOLD,14));
+			this.setBackground(new Color(33,33,33));
+			this.setFont(new Font("Dialog", Font.BOLD,14));
 			this.setForeground(Color.white);
 			this.setHorizontalAlignment(SwingConstants.RIGHT);
 			table.getColumnModel().getColumn(0).setCellRenderer(this);
@@ -47,7 +48,7 @@ public class RenderTablaResumen extends DefaultTableCellRenderer {
 		}
 		
 		// color de la cuadricula de la tabla
-		table.setGridColor(new Color(96,125,139));
+		table.setGridColor(new Color(97,97,97));
 		
 
 		return this;
