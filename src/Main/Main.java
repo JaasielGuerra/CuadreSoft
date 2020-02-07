@@ -24,7 +24,7 @@ public class Main {
 			ControlInicio in = new ControlInicio();
 
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Imposible modificar el tema visual", "Lookandfeel inválido.",
+			JOptionPane.showMessageDialog(null, "Imposible modificar el tema visual: \n" + e.getMessage(), "Lookandfeel inválido.",
 					JOptionPane.ERROR_MESSAGE);
 		}
 

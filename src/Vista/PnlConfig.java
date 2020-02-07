@@ -43,7 +43,6 @@ public class PnlConfig extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
 		add(panel_1, BorderLayout.SOUTH);
 		

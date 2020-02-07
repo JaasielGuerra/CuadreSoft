@@ -244,7 +244,7 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 				PanelInferior.setVisible(false);
 
 				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(1);// presentar en orden descendente
-				this.CtrlHistorialCuadre.Fecha.setDate(new Date());
+				this.CtrlHistorialCuadre.Fecha.setDatoFecha(new Date());
 				cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);
 
 			} else {
@@ -278,8 +278,8 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 			PanelInferior.setVisible(false);
 
 			// si el mensaje de reiniciar no es visible, se pone seleccionado el check
-			if (!CtrlConfig.LblMsj.isVisible())
-				CtrlConfig.checkActivar.setSelected(true);
+			//if (!CtrlConfig.LblMsj.isVisible())
+				//CtrlConfig.checkActivar.setSelected(true);
 
 			cambiar.cambiarPNL(PanelCentral, CtrlConfig);
 		}

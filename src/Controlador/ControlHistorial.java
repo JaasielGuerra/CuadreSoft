@@ -158,9 +158,9 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 		/////////// boton de ir/////////////
 		if (e.getSource().equals(BtnBuscar)) {
-			if (Fecha.getDate() != null) {// validar que no sea null la fecha
-				DateFormat formato = new SimpleDateFormat(Fecha.getDateFormatString());
-				presentarHistorial(formato.format(Fecha.getDate()));
+			if (Fecha.getDatoFecha() != null) {// validar que no sea null la fecha
+				DateFormat formato = new SimpleDateFormat(Fecha.getFormatoFecha());
+				presentarHistorial(formato.format(Fecha.getDatoFecha()));
 			}
 
 		}

@@ -27,6 +27,11 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.awt.Cursor;
+import java.awt.SystemColor;
+import java.awt.Window.Type;
+import javax.swing.JSplitPane;
+import javax.swing.Box;
+import javax.swing.JSeparator;
 
 /*
  * VIsta principal del programa
@@ -50,6 +55,8 @@ public class FrameVistaPrincipal extends JFrame {
 	
 
 	public FrameVistaPrincipal() {
+		setMinimumSize(new Dimension(720, 480));
+		setPreferredSize(new Dimension(720, 480));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameVistaPrincipal.class.getResource("/Img/icono.png")));
 		
 		setTitle("CuadreSoft 1.0.3");
@@ -58,12 +65,13 @@ public class FrameVistaPrincipal extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		
 		JPanel PanelSup = new JPanel();
+		PanelSup.setBackground(Color.white);
 		//PanelSup.setBackground(new Color(232,232,232));
 		contentPane.add(PanelSup, BorderLayout.NORTH);
 		PanelSup.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

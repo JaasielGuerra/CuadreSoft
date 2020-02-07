@@ -27,7 +27,7 @@ public class RenderTablaResumen extends DefaultTableCellRenderer {
 		
 		
 		if(isSelected) {
-			this.setBackground(new Color(245,245,245));
+			this.setBackground(new Color(189,189,189));
 		}else {
 			this.setBackground(Color.WHITE);
 		}
@@ -41,7 +41,7 @@ public class RenderTablaResumen extends DefaultTableCellRenderer {
 		}
 		
 		if(column == 1) {// modificar columna dos
-			this.setFont(new Font("Times New Roman", Font.PLAIN,20));
+			this.setFont(new Font("Times New Roman", Font.BOLD,20));
 			this.setForeground(Color.BLACK);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 			table.getColumnModel().getColumn(1).setCellRenderer(this);

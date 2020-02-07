@@ -56,27 +56,32 @@ public class PnlDesglose extends JPanel {
 		add(panel_3, BorderLayout.SOUTH);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		panel_4.setBorder(null);
 		add(panel_4, BorderLayout.CENTER);
 		
 		Uno = new JTextField();
-		Uno.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Uno.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		Uno.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Uno.setColumns(10);
 		
 		CincuentaCent = new JTextField();
-		CincuentaCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		CincuentaCent.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		CincuentaCent.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		CincuentaCent.setColumns(10);
 		
 		VeinticincoCent = new JTextField();
-		VeinticincoCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		VeinticincoCent.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		VeinticincoCent.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		VeinticincoCent.setColumns(10);
 		
 		DiezCent = new JTextField();
-		DiezCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		DiezCent.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		DiezCent.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		DiezCent.setColumns(10);
 		
 		CincoCent = new JTextField();
-		CincoCent.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		CincoCent.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		CincoCent.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		CincoCent.setColumns(10);
 		panel_4.setLayout(new GridLayout(10, 2, 15, 3));
 		
@@ -86,7 +91,8 @@ public class PnlDesglose extends JPanel {
 		panel_4.add(lblNewLabel);
 		
 		Cien = new JTextField();
-		Cien.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Cien.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		Cien.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Cien.setColumns(10);
 		panel_4.add(Cien);
 		
@@ -96,7 +102,8 @@ public class PnlDesglose extends JPanel {
 		panel_4.add(lblNewLabel_1);
 		
 		Cincuenta = new JTextField();
-		Cincuenta.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Cincuenta.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		Cincuenta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Cincuenta.setColumns(10);
 		panel_4.add(Cincuenta);
 		
@@ -106,7 +113,8 @@ public class PnlDesglose extends JPanel {
 		panel_4.add(lblNewLabel_2);
 		
 		Veinte = new JTextField();
-		Veinte.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Veinte.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		Veinte.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Veinte.setColumns(10);
 		panel_4.add(Veinte);
 		
@@ -116,7 +124,8 @@ public class PnlDesglose extends JPanel {
 		panel_4.add(lblNewLabel_3);
 		
 		Diez = new JTextField();
-		Diez.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Diez.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		Diez.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Diez.setColumns(10);
 		panel_4.add(Diez);
 		
@@ -126,7 +135,8 @@ public class PnlDesglose extends JPanel {
 		panel_4.add(lblNewLabel_4);
 		
 		Cinco = new JTextField();
-		Cinco.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		Cinco.setBorder(new LineBorder(Color.DARK_GRAY, 2));
+		Cinco.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Cinco.setColumns(10);
 		panel_4.add(Cinco);
 		

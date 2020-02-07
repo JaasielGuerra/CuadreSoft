@@ -35,14 +35,14 @@ public class ControlInicioCuadre extends PnlInicioCuadre implements FocusListene
 	// para devolver la lista de datos
 	public ArrayList<String> getDatos() {
 
-		DateFormat formato = new SimpleDateFormat(Fecha.getDateFormatString());// para formatear la fecha
+		DateFormat formato = new SimpleDateFormat(Fecha.getFormatoFecha());// para formatear la fecha
 
 		// validando datos
-		if (Fecha.getDate() != null && InicioCaja.getText().length() > 0 && Ventas.getText().length() > 0
+		if (Fecha.getDatoFecha() != null && InicioCaja.getText().length() > 0 && Ventas.getText().length() > 0
 				&& Gastos.getText().length() > 0) {
 
 			this.listaDatos = new ArrayList<String>();
-			this.listaDatos.add(formato.format(Fecha.getDate()));
+			this.listaDatos.add(formato.format(Fecha.getDatoFecha()));
 			this.listaDatos.add(InicioCaja.getText().replaceAll(",", ""));// eliminar las comas
 			this.listaDatos.add(Ventas.getText().replaceAll(",", ""));
 			this.listaDatos.add(Gastos.getText().replaceAll(",", ""));

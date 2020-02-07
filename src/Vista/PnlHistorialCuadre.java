@@ -33,11 +33,14 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JSplitPane;
 import javax.swing.JSeparator;
+import rojeru_san.componentes.RSDateChooser;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class PnlHistorialCuadre extends JPanel {
 	public JTable Tabla;
 	public JComboBox Ordenar;
-	public JDateChooser Fecha;
+	public RSDateChooser Fecha;
 	public JButton BtnBuscar;
 	private Component horizontalGlue;
 	private Component horizontalGlue_1;
@@ -79,15 +82,16 @@ public class PnlHistorialCuadre extends JPanel {
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
-		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
 		lblNewLabel = new JLabel("Orden:");
 		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		panel.add(lblNewLabel);
 		
 		Ordenar = new JComboBox();
+		Ordenar.setBorder(new LineBorder(Color.DARK_GRAY, 2));
 		Ordenar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		Ordenar.setFont(new Font("Dialog", Font.PLAIN, 14));
+		Ordenar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		Ordenar.setPreferredSize(new Dimension(200, 25));
 		panel.add(Ordenar);
 		
@@ -100,12 +104,15 @@ public class PnlHistorialCuadre extends JPanel {
 		lblFecha.setFont(new Font("Dialog", Font.PLAIN, 12));
 		panel.add(lblFecha);
 		
-		Fecha = new JDateChooser();
+		Fecha = new RSDateChooser();
+		Fecha.setFuente(new Font("Times New Roman", Font.BOLD, 14));
+		Fecha.setColorForeground(Color.BLACK);
+		Fecha.setColorButtonHover(Color.GRAY);
+		Fecha.setColorBackground(Color.DARK_GRAY);
 		Fecha.setFont(new Font("Dialog", Font.PLAIN, 14));
-		Fecha.setDateFormatString("yyyy-MM-dd");
+		Fecha.setFormatoFecha("yyyy-MM-dd");
 		Fecha.setPreferredSize(new Dimension(150, 25));
-		BorderLayout bl_Fecha = (BorderLayout) Fecha.getLayout();
-		Fecha.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		Fecha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel.add(Fecha);
 		
 		horizontalGlue_1 = Box.createHorizontalGlue();
@@ -125,7 +132,7 @@ public class PnlHistorialCuadre extends JPanel {
 		
 		panel_1 = new JPanel();
 		add(panel_1, BorderLayout.SOUTH);
-		panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+		panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
 		BtnEliminar = new JButton("Eliminar");
 		BtnEliminar.setMinimumSize(new Dimension(100, 30));

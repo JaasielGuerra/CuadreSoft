@@ -39,7 +39,7 @@ public class DlgNota extends JDialog {
 			contentPanel.add(scrollPane, BorderLayout.CENTER);
 			{
 				textArea = new JTextArea();
-				textArea.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				textArea.setFont(new Font("Dialog", Font.PLAIN, 14));
 				textArea.setLineWrap(true);
 				scrollPane.setViewportView(textArea);
 			}
