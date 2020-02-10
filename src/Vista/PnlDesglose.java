@@ -18,7 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class PnlDesglose extends JPanel {
 	
-	protected JTextField Cien;
+	public JTextField Cien;
 	protected JTextField Cincuenta;
 	protected JTextField Veinte;
 	protected JTextField Diez;

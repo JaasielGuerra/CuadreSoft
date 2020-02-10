@@ -18,9 +18,9 @@ public class DlgNota extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	public JButton BtnCancelar;
-	public JButton BtnAceptar;
 	private JScrollPane scrollPane;
 	public JTextArea textArea;
+	public JButton BtnAceptar;
 
 	/**
 	 * Create the dialog.
@@ -50,12 +50,11 @@ public class DlgNota extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				BtnAceptar = new JButton("Aceptar");
-				BtnAceptar.setBackground(new Color(129,199,132));
 				BtnAceptar.setPreferredSize(new Dimension(80, 30));
 				BtnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 				BtnAceptar.setFocusPainted(false);
+				BtnAceptar.setBackground(new Color(129,199,132));
 				buttonPane.add(BtnAceptar);
-				getRootPane().setDefaultButton(BtnAceptar);
 			}
 			{
 				BtnCancelar = new JButton("Cancelar");

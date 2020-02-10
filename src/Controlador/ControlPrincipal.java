@@ -30,6 +30,7 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 	private int pnlSiguiente = 0;
 	private boolean visibleOnTop = false;
 
+	// constructor
 	public ControlPrincipal(boolean visibleOnTop) {
 
 		this.visibleOnTop = visibleOnTop;
@@ -69,6 +70,7 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 			BtnAtras.setEnabled(false);
 			BtnGuardar.setVisible(false);
 			CheckNota.setVisible(false);
+			CtrlInicioCuadre.InicioCaja.requestFocus();
 
 			break;
 		case 1:// panel de desglose
@@ -78,6 +80,7 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 				BtnSig.setEnabled(true);
 				BtnGuardar.setVisible(false);
 				CheckNota.setVisible(false);
+				CtrlDesglose.Cien.requestFocus();
 			} else {
 				JOptionPane.showMessageDialog(this, "Formulario inválido. Por favor verifique", "Formulario",
 						JOptionPane.WARNING_MESSAGE);
@@ -222,12 +225,30 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 		BtnHistorial.doClick();// hacer click
 	}
 
+	private void desabilitarBtn(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+		BtnCuadrar.setEnabled(!e.getSource().equals(BtnCuadrar));
+		BtnHistorial.setEnabled(!e.getSource().equals(BtnHistorial));
+		BtnConfig.setEnabled(!e.getSource().equals(BtnConfig));
+
+	}
+
+	////////////// eventos/////////////
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		/*
+		 * if (!(e.getSource().equals(BtnAtras) || e.getSource().equals(BtnSig))) {
+		 * BtnCuadrar.setEnabled(!e.getSource().equals(BtnCuadrar));
+		 * BtnHistorial.setEnabled(!e.getSource().equals(BtnHistorial));
+		 * BtnConfig.setEnabled(!e.getSource().equals(BtnConfig)); }
+		 */
 
 		/////////// boton cuadrar////////////////
 		if (e.getSource().equals(BtnCuadrar)) {
 
+			desabilitarBtn(e);
 			escogerPanel(pnlSiguiente);
 			PanelInferior.setVisible(true);
 
@@ -241,10 +262,14 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 
 			if (contar.contarReg(ConstBaseDatos.rutaBD, "registro_cuadres") > 0) {// si existen registros
 
+				desabilitarBtn(e);
+
 				PanelInferior.setVisible(false);
 
 				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(1);// presentar en orden descendente
-				this.CtrlHistorialCuadre.Fecha.setDatoFecha(new Date());
+				this.CtrlHistorialCuadre.Fecha.setDatoFecha(new Date());// poner fecha actual al calendario
+				if(this.CtrlHistorialCuadre.panFiltar.isVisible())
+					this.CtrlHistorialCuadre.btnFiltrar.doClick();
 				cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);
 
 			} else {
@@ -275,11 +300,14 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 
 		////////////// boton configuracion////////////////
 		if (e.getSource().equals(BtnConfig)) {
+
+			desabilitarBtn(e);
+
 			PanelInferior.setVisible(false);
 
 			// si el mensaje de reiniciar no es visible, se pone seleccionado el check
-			//if (!CtrlConfig.LblMsj.isVisible())
-				//CtrlConfig.checkActivar.setSelected(true);
+			// if (!CtrlConfig.LblMsj.isVisible())
+			// CtrlConfig.checkActivar.setSelected(true);
 
 			cambiar.cambiarPNL(PanelCentral, CtrlConfig);
 		}

@@ -32,6 +32,7 @@ import java.awt.Window.Type;
 import javax.swing.JSplitPane;
 import javax.swing.Box;
 import javax.swing.JSeparator;
+import java.awt.event.KeyEvent;
 
 /*
  * VIsta principal del programa
@@ -52,6 +53,9 @@ public class FrameVistaPrincipal extends JFrame {
 	private JLabel lblNewLabel;
 	public JCheckBox CheckNota;
 	public JButton BtnConfig;
+	private JSeparator separator;
+	private JSeparator separator_1;
+	public JPanel PanelSup;
 	
 
 	public FrameVistaPrincipal() {
@@ -70,7 +74,7 @@ public class FrameVistaPrincipal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		
-		JPanel PanelSup = new JPanel();
+		PanelSup = new JPanel();
 		PanelSup.setBackground(Color.white);
 		//PanelSup.setBackground(new Color(232,232,232));
 		contentPane.add(PanelSup, BorderLayout.NORTH);
@@ -78,6 +82,8 @@ public class FrameVistaPrincipal extends JFrame {
 		
 		
 		BtnCuadrar = new JButton("Cuadrar");
+		BtnCuadrar.setMnemonic(KeyEvent.VK_F1);
+		BtnCuadrar.setRolloverEnabled(false);
 		BtnCuadrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BtnCuadrar.setContentAreaFilled(false);
 		BtnCuadrar.setPreferredSize(new Dimension(150, 30));
@@ -92,6 +98,11 @@ public class FrameVistaPrincipal extends JFrame {
 		BtnCuadrar.setFont(new Font("Dialog", Font.PLAIN, 14));
 		PanelSup.add(BtnCuadrar);
 		
+		separator = new JSeparator();
+		separator.setPreferredSize(new Dimension(2, 30));
+		separator.setOrientation(SwingConstants.VERTICAL);
+		PanelSup.add(separator);
+		
 		BtnHistorial = new JButton("Reporter\u00EDa");
 		BtnHistorial.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BtnHistorial.setContentAreaFilled(false);
@@ -100,8 +111,13 @@ public class FrameVistaPrincipal extends JFrame {
 		BtnHistorial.setBorder(null);
 		BtnHistorial.setFocusPainted(false);
 		BtnHistorial.setFont(new Font("Dialog", Font.PLAIN, 14));
-		BtnHistorial.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/historial.png")));
+		BtnHistorial.setIcon(new ImageIcon(FrameVistaPrincipal.class.getResource("/Img/Historial.png")));
 		PanelSup.add(BtnHistorial);
+		
+		separator_1 = new JSeparator();
+		separator_1.setPreferredSize(new Dimension(2, 30));
+		separator_1.setOrientation(SwingConstants.VERTICAL);
+		PanelSup.add(separator_1);
 		
 		BtnConfig = new JButton("Configuraci\u00F3n");
 		BtnConfig.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

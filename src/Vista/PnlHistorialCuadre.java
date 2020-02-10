@@ -48,12 +48,14 @@ public class PnlHistorialCuadre extends JPanel {
 	private JPanel panel_1;
 	public JButton BtnEliminar;
 	private JLabel lblFecha;
+	public JPanel panFiltar;
+	public JButton btnFiltrar;
 
 	/**
 	 * Create the panel.
 	 */
 	public PnlHistorialCuadre() {
-		setPreferredSize(new Dimension(600, 300));
+		setPreferredSize(new Dimension(696, 332));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -100,11 +102,23 @@ public class PnlHistorialCuadre extends JPanel {
 		horizontalGlue.setPreferredSize(new Dimension(50, 0));
 		panel.add(horizontalGlue);
 		
+		btnFiltrar = new JButton("Filtrar <<");
+		btnFiltrar.setFocusPainted(false);
+		btnFiltrar.setFont(new Font("Dialog", Font.PLAIN, 14));
+		panel.add(btnFiltrar);
+		
+		panFiltar = new JPanel();
+		FlowLayout fl_panFiltar = (FlowLayout) panFiltar.getLayout();
+		fl_panFiltar.setVgap(0);
+		fl_panFiltar.setHgap(0);
+		panel.add(panFiltar);
+		
 		lblFecha = new JLabel("Fecha:");
+		panFiltar.add(lblFecha);
 		lblFecha.setFont(new Font("Dialog", Font.PLAIN, 12));
-		panel.add(lblFecha);
 		
 		Fecha = new RSDateChooser();
+		panFiltar.add(Fecha);
 		Fecha.setFuente(new Font("Times New Roman", Font.BOLD, 14));
 		Fecha.setColorForeground(Color.BLACK);
 		Fecha.setColorButtonHover(Color.GRAY);
@@ -113,22 +127,21 @@ public class PnlHistorialCuadre extends JPanel {
 		Fecha.setFormatoFecha("yyyy-MM-dd");
 		Fecha.setPreferredSize(new Dimension(150, 25));
 		Fecha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panel.add(Fecha);
 		
 		horizontalGlue_1 = Box.createHorizontalGlue();
+		panFiltar.add(horizontalGlue_1);
 		horizontalGlue_1.setMinimumSize(new Dimension(15, 0));
 		horizontalGlue_1.setPreferredSize(new Dimension(15, 0));
-		panel.add(horizontalGlue_1);
 		
 		BtnBuscar = new JButton("Ir");
+		panFiltar.add(BtnBuscar);
 		BtnBuscar.setMargin(new Insets(0, 14, 0, 14));
 		BtnBuscar.setIconTextGap(10);
-		BtnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		BtnBuscar.setFont(new Font("Dialog", Font.PLAIN, 14));
 		BtnBuscar.setHorizontalTextPosition(SwingConstants.LEFT);
 		BtnBuscar.setIcon(new ImageIcon(PnlHistorialCuadre.class.getResource("/Img/buscar.png")));
 		BtnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BtnBuscar.setFocusPainted(false);
-		panel.add(BtnBuscar);
 		
 		panel_1 = new JPanel();
 		add(panel_1, BorderLayout.SOUTH);

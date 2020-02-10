@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.JProgressBar;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.Window.Type;
 
 public class FrameCarga extends JFrame {
 
@@ -23,12 +24,15 @@ public class FrameCarga extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameCarga() {
+		setEnabled(false);
+		setAlwaysOnTop(true);
+		setResizable(false);
+		setType(Type.NORMAL);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameCarga.class.getResource("/Img/icono.png")));
 		
 		setBackground(Color.WHITE);
-		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(450, 50);
+		setSize(450, 80);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);

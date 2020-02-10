@@ -22,10 +22,11 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 	private ControlNota CtrlNota;
 	private RellenarTabla rt;
-	
+
 	public ControlHistorial(boolean visibleTop) {
 
 		initCombobox();// llenar el combo
+		panFiltar.setVisible(false);// poner oculto al principio
 
 		this.CtrlNota = new ControlNota();
 		this.CtrlNota.setAlwaysOnTop(visibleTop);
@@ -37,6 +38,7 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 		this.Ordenar.addActionListener(this);
 		this.BtnBuscar.addActionListener(this);
 		this.BtnEliminar.addActionListener(this);
+		this.btnFiltrar.addActionListener(this);
 
 		this.Tabla.addMouseListener(this);
 
@@ -168,6 +170,16 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 		//////////// boton de eliminar//////////////
 		if (e.getSource().equals(BtnEliminar)) {
 			eliminarRegistro();
+		}
+
+		///////// boton de filtrar//////////
+		if (e.getSource().equals(btnFiltrar)) {
+			
+			if(panFiltar.isVisible())
+				btnFiltrar.setText("Filtrar <<");
+			else
+				btnFiltrar.setText("Filtrar >>");
+			panFiltar.setVisible(!panFiltar.isVisible());
 		}
 
 	}
