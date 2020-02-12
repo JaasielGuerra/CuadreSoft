@@ -1,20 +1,15 @@
 package Vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-//import com.sun.awt.AWTUtilities;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import java.awt.Color;
-import javax.swing.JProgressBar;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.Window.Type;
+
+import javax.swing.JFrame;
+//import com.sun.awt.AWTUtilities;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class FrameCarga extends JFrame {
 
@@ -24,7 +19,6 @@ public class FrameCarga extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameCarga() {
-		setEnabled(false);
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setType(Type.NORMAL);
@@ -32,7 +26,7 @@ public class FrameCarga extends JFrame {
 		
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(450, 80);
+		setSize(460, 134);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);

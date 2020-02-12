@@ -1,38 +1,27 @@
 package Vista;
 
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
-import javax.swing.DebugGraphics;
-import javax.swing.JCheckBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import java.awt.Dimension;
 import java.awt.Cursor;
-import java.awt.SystemColor;
-import java.awt.Window.Type;
-import javax.swing.JSplitPane;
-import javax.swing.Box;
-import javax.swing.JSeparator;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 /*
  * VIsta principal del programa
@@ -63,7 +52,7 @@ public class FrameVistaPrincipal extends JFrame {
 		setPreferredSize(new Dimension(720, 480));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameVistaPrincipal.class.getResource("/Img/icono.png")));
 		
-		setTitle("CuadreSoft 1.0.3");
+		setTitle("CuadreSoft 1.1.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(720,480);
 		setLocationRelativeTo(null);

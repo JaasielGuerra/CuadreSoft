@@ -10,8 +10,6 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import java.awt.Cursor;
-
 public class RenderTablaHistorial extends DefaultTableCellRenderer {
 
 	private JButton boton;

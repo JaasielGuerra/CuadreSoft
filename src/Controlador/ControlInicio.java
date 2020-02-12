@@ -17,6 +17,8 @@ import Modelo.RunScriptSQL;
  */
 
 public class ControlInicio {
+	
+	private boolean todoListo = false;
 
 	private CContarRegistros contador;
 	private Conexion objConector;
@@ -73,6 +75,7 @@ public class ControlInicio {
 			}
 			
 			ControlPrincipal c = new ControlPrincipal(visibleTop);
+			this.todoListo = true;
 			c.setVisible(true);
 
 		} catch (SQLException e) {
@@ -92,9 +95,15 @@ public class ControlInicio {
 			//new ControlPrincipal().setVisible(true);
 			
 		} else {
+			this.todoListo = true;
 			new ControlAsistente().setVisible(true);
 		}
 
+	}
+	
+	public boolean getTodoListo() {
+		// TODO Auto-generated method stub
+		return this.todoListo;
 	}
 
 }

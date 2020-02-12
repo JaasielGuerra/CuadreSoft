@@ -1,33 +1,26 @@
 package Vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.JTextPane;
-import java.awt.Dimension;
-import java.awt.Font;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.BoxLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.Checkbox;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import java.awt.Toolkit;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 public class FrameAsistente extends JFrame {
 

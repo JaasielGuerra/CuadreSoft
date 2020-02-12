@@ -1,13 +1,12 @@
 package Vista;
 
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /*
  * para personalizar un JTable

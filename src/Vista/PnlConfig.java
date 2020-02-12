@@ -1,19 +1,19 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
-import javax.swing.border.TitledBorder;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JCheckBox;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.Color;
+
 import javax.swing.ImageIcon;
-import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 public class PnlConfig extends JPanel {
 	public JLabel LblMsj;

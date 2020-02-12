@@ -1,30 +1,22 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import java.awt.Color;
-import com.toedter.calendar.JDateChooser;
-
-import rojeru_san.componentes.RSDateChooser;
-
-import java.awt.GridLayout;
-import java.text.NumberFormat;
-import java.util.Locale;
-import java.awt.Font;
-import javax.swing.border.TitledBorder;
-import javax.swing.JFormattedTextField;
-import java.util.Date;
-import javax.swing.UIManager;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.text.NumberFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import rojeru_san.componentes.RSDateChooser;
 
 public class PnlInicioCuadre extends JPanel {
 
