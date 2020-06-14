@@ -8,21 +8,19 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import Modelo.CConsultar;
 import Modelo.CEliminar;
 import Modelo.Conexion;
 import Modelo.ConstBaseDatos;
+import Modelo.GenerarReporte;
 import Vista.PnlHistorialCuadre;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class ControlHistorial extends PnlHistorialCuadre implements ActionListener, MouseListener {
@@ -36,20 +34,20 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 	private JasperPrint documento; // objeto que representa el documento para imprimir
 	private JasperViewer vistaPrevia; // esta es la vista previa del reporte
 	private Conexion con = new Conexion(ConstBaseDatos.rutaBD);// objeto de conexion
+	private GenerarReporte generarReporte = new GenerarReporte();
 
 	public ControlHistorial(boolean visibleTop) {
 
-		try {
-
-			this.reporte = (JasperReport) JRLoader
-					.loadObject(ControlHistorial.class.getResource("/Reporte/reporte.jasper"));
-
-		} catch (JRException ex) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(this, "Error al acceder binario del reporte: " + ex.getMessage(),
-					"Error JasperReport", JOptionPane.ERROR_MESSAGE);
-		}
-
+		/*
+		 * try {
+		 * 
+		 * this.reporte = (JasperReport) JRLoader
+		 * .loadObject(ControlHistorial.class.getResource("/Reporte/reporte.jasper"));
+		 * 
+		 * } catch (JRException ex) { // TODO Auto-generated catch block
+		 * JOptionPane.showMessageDialog(this, "Error al acceder binario del reporte: "
+		 * + ex.getMessage(), "Error JasperReport", JOptionPane.ERROR_MESSAGE); }
+		 */
 		initCombobox();// llenar el combo
 		panFiltar.setVisible(false);// poner oculto al principio
 
@@ -213,28 +211,72 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 			this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
 
-			try {
-				this.documento = JasperFillManager.fillReport(reporte, null, con.conectar());
-				this.vistaPrevia = new JasperViewer(documento, false);
-				this.vistaPrevia.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				//this.vistaPrevia.setAlwaysOnTop(true);
-				//this.vistaPrevia.setResizable(false);
-				
-				this.vistaPrevia.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				this.vistaPrevia.setTitle("Vista previa");
-				this.vistaPrevia
-						.setIconImage(new ImageIcon(ControlHistorial.class.getResource("/Img/icono.png")).getImage());
+			ArrayList<ArrayList<String>> row = new ArrayList<>();
+			DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
+			double sumaTotal = 0.00D;
+			double sumaFaltante = 0.00D;
+			double sumaSobrante = 0.00D;
+			double difGlobal = 0.00D;
 
-				this.vistaPrevia.setVisible(true);
-				
-				con.cerrar();// cerrar la conexion
+			for (int i = 0; i < model.getRowCount(); i++) {
 
-			} catch (JRException ex) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(this, "Ocurrió un problema al generar el reporte: " + ex.getMessage(),
-						"Error JasperReport", JOptionPane.ERROR_MESSAGE);
+				ArrayList<String> colData = new ArrayList<>();
+
+				colData.add(model.getValueAt(i, 0).toString());
+				colData.add(model.getValueAt(i, 1).toString());
+				colData.add(model.getValueAt(i, 2).toString());
+				colData.add(model.getValueAt(i, 3).toString());
+				colData.add(model.getValueAt(i, 4).toString());
+				colData.add(model.getValueAt(i, 5).toString());
+				colData.add(model.getValueAt(i, 6).toString());
+
+				sumaTotal += Double.parseDouble(model.getValueAt(i, 6).toString());
+				sumaFaltante += (Double.parseDouble(model.getValueAt(i, 5).toString()) < 0)
+						? Double.parseDouble(model.getValueAt(i, 5).toString())
+						: 0;
+
+				sumaSobrante += (Double.parseDouble(model.getValueAt(i, 5).toString()) > 0)
+						? Double.parseDouble(model.getValueAt(i, 5).toString())
+						: 0;
+
+				row.add(colData);
+
 			}
 
+			difGlobal = sumaSobrante + (sumaFaltante);
+
+			ArrayList<String> header = new ArrayList<>();
+
+			header.add("Fecha");
+			header.add("Inicio Caja");
+			header.add("Ventas");
+			header.add("Gastos");
+			header.add("Dinero real");
+			header.add("Diferencia");
+			header.add("Cuadre final");
+
+			this.generarReporte.generarReporte("Reporte - Historial de cuadres", row, header, "User", "" + sumaTotal,
+					"" + sumaFaltante, "" + sumaSobrante, "" + (double) Math.round(difGlobal * 100d) / 100d);
+			/*
+			 * try { this.documento = JasperFillManager.fillReport(reporte, null,
+			 * con.conectar()); this.vistaPrevia = new JasperViewer(documento, false);
+			 * this.vistaPrevia.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			 * //this.vistaPrevia.setAlwaysOnTop(true);
+			 * //this.vistaPrevia.setResizable(false);
+			 * 
+			 * this.vistaPrevia.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			 * this.vistaPrevia.setTitle("Vista previa"); this.vistaPrevia .setIconImage(new
+			 * ImageIcon(ControlHistorial.class.getResource("/Img/icono.png")).getImage());
+			 * 
+			 * this.vistaPrevia.setVisible(true);
+			 * 
+			 * con.cerrar();// cerrar la conexion
+			 * 
+			 * } catch (JRException ex) { // TODO Auto-generated catch block
+			 * JOptionPane.showMessageDialog(this,
+			 * "Ocurrió un problema al generar el reporte: " + ex.getMessage(),
+			 * "Error JasperReport", JOptionPane.ERROR_MESSAGE); }
+			 */
 			this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
 
 		}
