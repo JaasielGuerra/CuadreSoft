@@ -35,6 +35,26 @@ public class CConsultar {
 		initVariables();
 
 	}
+	
+	public void consultarGeneral(String sql)// para cualquier consulta
+	{
+		initVariables();// limpiar antes de cada consulta
+		SQL.append(sql);// SQL
+
+		try {
+
+			System.out.println("SQL ejecutado " + SQL.toString());// imprimir SQL
+			preConsulta = objConector.prepareStatement(SQL.toString());
+			resultadoConsulta = preConsulta.executeQuery();// ejecutar la consulta
+			// preConsulta.close();
+		} catch (SQLException ex) {
+			System.err.println("Error al leer desde la base de datos: " + ex.getMessage());
+			System.err.println("Tabla :" + this.nombreTab);
+			resultadoConsulta = null;
+		} 
+
+		// return resultadoConsulta;//retorna toda la consulta
+	}
 
 	public void consultar(String ResultColumna)// para consultas generales
 	{

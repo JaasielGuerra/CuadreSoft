@@ -26,11 +26,9 @@ import rojeru_san.componentes.RSDateChooser;
 public class PnlHistorialCuadre extends JPanel {
 	public JTable Tabla;
 	public JComboBox Ordenar;
-	public RSDateChooser Fecha;
+	public RSDateChooser fechaFin;
 	public JButton BtnBuscar;
-	private Component horizontalGlue;
 	private Component horizontalGlue_1;
-	private JLabel lblNewLabel;
 	private JPanel panel_1;
 	public JButton BtnEliminar;
 	private JLabel lblFecha;
@@ -39,6 +37,9 @@ public class PnlHistorialCuadre extends JPanel {
 	public JButton btnImprimir;
 	private JLabel label;
 	public JLabel label_1;
+	public RSDateChooser fechaInicio;
+	private Component horizontalGlue;
+	private Component horizontalGlue_2;
 
 	/**
 	 * Create the panel.
@@ -70,10 +71,6 @@ public class PnlHistorialCuadre extends JPanel {
 		add(panel, BorderLayout.NORTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
-		lblNewLabel = new JLabel("Orden:");
-		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
-		panel.add(lblNewLabel);
-
 		Ordenar = new JComboBox();
 		Ordenar.setBorder(new LineBorder(Color.DARK_GRAY, 2));
 		Ordenar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -81,12 +78,7 @@ public class PnlHistorialCuadre extends JPanel {
 		Ordenar.setPreferredSize(new Dimension(200, 25));
 		panel.add(Ordenar);
 
-		horizontalGlue = Box.createHorizontalGlue();
-		horizontalGlue.setMinimumSize(new Dimension(50, 0));
-		horizontalGlue.setPreferredSize(new Dimension(50, 0));
-		panel.add(horizontalGlue);
-
-		btnFiltrar = new JButton("Filtrar <<");
+		btnFiltrar = new JButton("<<");
 		btnFiltrar.setFocusPainted(false);
 		btnFiltrar.setFont(new Font("Dialog", Font.PLAIN, 14));
 		panel.add(btnFiltrar);
@@ -96,28 +88,50 @@ public class PnlHistorialCuadre extends JPanel {
 		fl_panFiltar.setVgap(0);
 		fl_panFiltar.setHgap(0);
 		panel.add(panFiltar);
+		
+		fechaInicio = new RSDateChooser();
+		fechaInicio.setPreferredSize(new Dimension(150, 25));
+		fechaInicio.setPlaceholder("");
+		fechaInicio.setFuente(new Font("Times New Roman", Font.BOLD, 14));
+		fechaInicio.setFormatoFecha("yyyy-MM-dd");
+		fechaInicio.setFont(new Font("Dialog", Font.PLAIN, 14));
+		fechaInicio.setColorForeground(Color.BLACK);
+		fechaInicio.setColorButtonHover(Color.GRAY);
+		fechaInicio.setColorBackground(Color.DARK_GRAY);
+		panFiltar.add(fechaInicio);
+		
+		horizontalGlue = Box.createHorizontalGlue();
+		horizontalGlue.setPreferredSize(new Dimension(15, 0));
+		horizontalGlue.setMinimumSize(new Dimension(15, 0));
+		panFiltar.add(horizontalGlue);
 
-		lblFecha = new JLabel("Fecha:");
+		lblFecha = new JLabel("A");
 		panFiltar.add(lblFecha);
 		lblFecha.setFont(new Font("Dialog", Font.PLAIN, 12));
+		
+		horizontalGlue_2 = Box.createHorizontalGlue();
+		horizontalGlue_2.setPreferredSize(new Dimension(15, 0));
+		horizontalGlue_2.setMinimumSize(new Dimension(15, 0));
+		panFiltar.add(horizontalGlue_2);
 
-		Fecha = new RSDateChooser();
-		panFiltar.add(Fecha);
-		Fecha.setFuente(new Font("Times New Roman", Font.BOLD, 14));
-		Fecha.setColorForeground(Color.BLACK);
-		Fecha.setColorButtonHover(Color.GRAY);
-		Fecha.setColorBackground(Color.DARK_GRAY);
-		Fecha.setFont(new Font("Dialog", Font.PLAIN, 14));
-		Fecha.setFormatoFecha("yyyy-MM-dd");
-		Fecha.setPreferredSize(new Dimension(150, 25));
-		Fecha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		fechaFin = new RSDateChooser();
+		fechaFin.setPlaceholder("");
+		panFiltar.add(fechaFin);
+		fechaFin.setFuente(new Font("Times New Roman", Font.BOLD, 14));
+		fechaFin.setColorForeground(Color.BLACK);
+		fechaFin.setColorButtonHover(Color.GRAY);
+		fechaFin.setColorBackground(Color.DARK_GRAY);
+		fechaFin.setFont(new Font("Dialog", Font.PLAIN, 14));
+		fechaFin.setFormatoFecha("yyyy-MM-dd");
+		fechaFin.setPreferredSize(new Dimension(150, 25));
+		fechaFin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
 		horizontalGlue_1 = Box.createHorizontalGlue();
 		panFiltar.add(horizontalGlue_1);
 		horizontalGlue_1.setMinimumSize(new Dimension(15, 0));
 		horizontalGlue_1.setPreferredSize(new Dimension(15, 0));
 
-		BtnBuscar = new JButton("Ir");
+		BtnBuscar = new JButton("");
 		panFiltar.add(BtnBuscar);
 		BtnBuscar.setMargin(new Insets(0, 14, 0, 14));
 		BtnBuscar.setIconTextGap(10);

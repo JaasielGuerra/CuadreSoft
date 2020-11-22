@@ -267,7 +267,8 @@ public class ControlPrincipal extends FrameVistaPrincipal implements ActionListe
 				PanelInferior.setVisible(false);
 
 				this.CtrlHistorialCuadre.Ordenar.setSelectedIndex(1);// presentar en orden descendente
-				this.CtrlHistorialCuadre.Fecha.setDatoFecha(new Date());// poner fecha actual al calendario
+				this.CtrlHistorialCuadre.fechaInicio.setDatoFecha(new Date());// poner fecha actual al calendario
+				this.CtrlHistorialCuadre.fechaFin.setDatoFecha(new Date());// poner fecha actual al calendario
 				if(this.CtrlHistorialCuadre.panFiltar.isVisible())
 					this.CtrlHistorialCuadre.btnFiltrar.doClick();
 				cambiar.cambiarPNL(PanelCentral, CtrlHistorialCuadre);

@@ -101,7 +101,7 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// cursor por defecto
 	}
 
-	public void presentarHistorial(String fecha) {
+	public void presentarHistorial(String fecha1, String fecha2) {
 
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));// cursor en espera
 
@@ -110,9 +110,8 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 		Conexion ObjConector = new Conexion(ConstBaseDatos.rutaBD);
 		CConsultar con = new CConsultar(ObjConector.conectar(), "registro_cuadres");
 
-		// consultar por fecha especifica
-		con.consultar("fecha, inicio_caja, ventas, gastos, dinero_real, sobra_falta, cuadre_final", "fecha", "=",
-				fecha);
+		// consultar por rango de fecha
+		con.consultarGeneral("SELECT * FROM registro_cuadres WHERE fecha BETWEEN '"+fecha1+"' AND '"+fecha2+"';");
 
 		rt.setDatos(con.getResultadoConsulta(), this.Tabla);
 		rt.llenarTabla();
@@ -184,9 +183,16 @@ public class ControlHistorial extends PnlHistorialCuadre implements ActionListen
 
 		/////////// boton de ir/////////////
 		if (e.getSource().equals(BtnBuscar)) {
-			if (Fecha.getDatoFecha() != null) {// validar que no sea null la fecha
-				DateFormat formato = new SimpleDateFormat(Fecha.getFormatoFecha());
-				presentarHistorial(formato.format(Fecha.getDatoFecha()));
+			if (fechaInicio.getDatoFecha() != null && fechaFin.getDatoFecha() != null) {// validar que no sea null la fecha
+				
+				
+				
+				DateFormat formato = new SimpleDateFormat(fechaInicio.getFormatoFecha());
+				DateFormat formato2 = new SimpleDateFormat(fechaFin.getFormatoFecha());
+				
+				
+				
+				presentarHistorial(formato.format(fechaInicio.getDatoFecha()), formato2.format(fechaFin.getDatoFecha()));
 			}
 
 		}
